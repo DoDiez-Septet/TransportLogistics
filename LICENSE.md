@@ -1,7 +1,7 @@
 MIT License
 
 Copyright (c) 2022 Pavlov Alexandr, Evreinov Dmitriy, Lyagaev Evgeniy, 
-	Aleksander Varaksin, Sayan Damdinov, Akhmat Guliev
+	Aleksander Varaksin, Sayan Damdinov, Akhmat Guliev, Alexandr Kutiev
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
