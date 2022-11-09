@@ -1,1 +1,1 @@
-"DoDiez-Quintet education project" 
+"DoDiez-Septet education project" 
