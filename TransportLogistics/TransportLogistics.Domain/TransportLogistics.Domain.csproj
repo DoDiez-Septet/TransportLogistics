@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Interfaces\Customers\" />
+    <Folder Include="Interfaces\Gateway\" />
+    <Folder Include="Interfaces\Users\" />
+    <Folder Include="Interfaces\Reports\" />
+    <Folder Include="Interfaces\Notification\" />
+    <Folder Include="Models\Customers\" />
+    <Folder Include="Models\Gateway\" />
+    <Folder Include="Models\Notification\" />
+    <Folder Include="Models\Reports\" />
+    <Folder Include="Models\Users\" />
+  </ItemGroup>
+
+</Project>
