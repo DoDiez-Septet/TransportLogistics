@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33110.190
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GatewayApi", "GatewayApi\GatewayApi.csproj", "{1EE23B7C-9EAD-4D83-A6FB-9F9ABAFB0366}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GatewayApi", "GatewayApi\GatewayApi.csproj", "{1EE23B7C-9EAD-4D83-A6FB-9F9ABAFB0366}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UI", "UI", "{A478F488-3E81-4E61-A428-A452E7CAF663}"
 EndProject
@@ -17,35 +17,39 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "NotificationService", "Noti
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ReportService", "ReportService", "{C8F6BF9B-C8C5-4A64-B5DE-D1766656D789}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomerService", "CustomerService\CustomerService.csproj", "{37F36247-7DA5-430C-B131-A43A016DF682}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CustomerService", "CustomerService\CustomerService.csproj", "{37F36247-7DA5-430C-B131-A43A016DF682}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NotificationService", "NotificationService\NotificationService.csproj", "{B792BC77-6913-4583-A806-3DF17B5EBB3D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NotificationService", "NotificationService\NotificationService.csproj", "{B792BC77-6913-4583-A806-3DF17B5EBB3D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReportService", "ReportService\ReportService.csproj", "{87C04303-379E-4FE3-AA46-FDE646B40C54}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ReportService", "ReportService\ReportService.csproj", "{87C04303-379E-4FE3-AA46-FDE646B40C54}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UserService", "UserService\UserService.csproj", "{051819EE-73D1-4614-8AE2-5B0C1A359723}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UserService", "UserService\UserService.csproj", "{051819EE-73D1-4614-8AE2-5B0C1A359723}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TransportLogistics.Domain", "TransportLogistics.Domain\TransportLogistics.Domain.csproj", "{793A66A4-AF04-4657-BE94-3BC65677045C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TransportLogistics.Domain", "TransportLogistics.Domain\TransportLogistics.Domain.csproj", "{793A66A4-AF04-4657-BE94-3BC65677045C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GatewayApi.BusinessLogic", "GatewayApi.BusinessLogic\GatewayApi.BusinessLogic.csproj", "{67F90A0A-9F56-43C1-95EE-B0BEF66660AC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CustomerService.BusinessLogic", "CustomerService.BusinessLogic\CustomerService.BusinessLogic.csproj", "{8CAB7ED7-A60E-48F1-9D81-98ABB0CC2F4F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GatewayApi.DataAccess", "GatewayApi.DataAccess\GatewayApi.DataAccess.csproj", "{095F25DA-78E8-4C67-9153-7B167B0093BF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CustomerService.DataAccess", "CustomerService.DataAccess\CustomerService.DataAccess.csproj", "{6CEE7D00-7F9D-4FB6-89ED-204502690FCB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomerService.BusinessLogic", "CustomerService.BusinessLogic\CustomerService.BusinessLogic.csproj", "{8CAB7ED7-A60E-48F1-9D81-98ABB0CC2F4F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NotificationService.BusinessLogic", "NotificationService.BusinessLogic\NotificationService.BusinessLogic.csproj", "{249529E2-485E-4016-A05D-DBF544DD48AE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomerService.DataAccess", "CustomerService.DataAccess\CustomerService.DataAccess.csproj", "{6CEE7D00-7F9D-4FB6-89ED-204502690FCB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NotificationService.DataAccess", "NotificationService.DataAccess\NotificationService.DataAccess.csproj", "{67E79132-01D3-4C25-91EC-9811219B76B8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NotificationService.BusinessLogic", "NotificationService.BusinessLogic\NotificationService.BusinessLogic.csproj", "{249529E2-485E-4016-A05D-DBF544DD48AE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ReportService.BusinessLogic", "ReportService.BusinessLogic\ReportService.BusinessLogic.csproj", "{C8677071-964F-488A-9163-16FD90A96728}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NotificationService.DataAccess", "NotificationService.DataAccess\NotificationService.DataAccess.csproj", "{67E79132-01D3-4C25-91EC-9811219B76B8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ReportService.DataAccess", "ReportService.DataAccess\ReportService.DataAccess.csproj", "{6F519FC0-8F12-4369-AB44-7723D55AB492}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReportService.BusinessLogic", "ReportService.BusinessLogic\ReportService.BusinessLogic.csproj", "{C8677071-964F-488A-9163-16FD90A96728}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UserService.BusinessLogic", "UserService.BusinessLogic\UserService.BusinessLogic.csproj", "{8B3B1545-FDD9-48A0-86C7-F2562BB32E8C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReportService.DataAccess", "ReportService.DataAccess\ReportService.DataAccess.csproj", "{6F519FC0-8F12-4369-AB44-7723D55AB492}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UserService.DataAccess", "UserService.DataAccess\UserService.DataAccess.csproj", "{B8651EE2-C664-4861-BF11-7B45FA361A83}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UserService.BusinessLogic", "UserService.BusinessLogic\UserService.BusinessLogic.csproj", "{8B3B1545-FDD9-48A0-86C7-F2562BB32E8C}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "OrderService", "OrderService", "{0A3F7789-B527-46BE-AB79-4D85230A55A5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UserService.DataAccess", "UserService.DataAccess\UserService.DataAccess.csproj", "{B8651EE2-C664-4861-BF11-7B45FA361A83}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderService", "OrderService\OrderService.csproj", "{9E711921-A0D1-4DBC-8AE6-F52EE51CA208}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderService.BusinessLogic", "OrderService.BusinessLogic\OrderService.BusinessLogic.csproj", "{B5D963D4-C99B-4AD9-9E7F-B76393AD5C64}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderService.DataAccess", "OrderService.DataAccess\OrderService.DataAccess.csproj", "{4084F5CD-91EE-4B54-B866-1B2FDA7E1A30}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -77,14 +81,6 @@ Global
 		{793A66A4-AF04-4657-BE94-3BC65677045C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{793A66A4-AF04-4657-BE94-3BC65677045C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{793A66A4-AF04-4657-BE94-3BC65677045C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{67F90A0A-9F56-43C1-95EE-B0BEF66660AC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{67F90A0A-9F56-43C1-95EE-B0BEF66660AC}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{67F90A0A-9F56-43C1-95EE-B0BEF66660AC}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{67F90A0A-9F56-43C1-95EE-B0BEF66660AC}.Release|Any CPU.Build.0 = Release|Any CPU
-		{095F25DA-78E8-4C67-9153-7B167B0093BF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{095F25DA-78E8-4C67-9153-7B167B0093BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{095F25DA-78E8-4C67-9153-7B167B0093BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{095F25DA-78E8-4C67-9153-7B167B0093BF}.Release|Any CPU.Build.0 = Release|Any CPU
 		{8CAB7ED7-A60E-48F1-9D81-98ABB0CC2F4F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{8CAB7ED7-A60E-48F1-9D81-98ABB0CC2F4F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8CAB7ED7-A60E-48F1-9D81-98ABB0CC2F4F}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -117,6 +113,18 @@ Global
 		{B8651EE2-C664-4861-BF11-7B45FA361A83}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B8651EE2-C664-4861-BF11-7B45FA361A83}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B8651EE2-C664-4861-BF11-7B45FA361A83}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9E711921-A0D1-4DBC-8AE6-F52EE51CA208}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9E711921-A0D1-4DBC-8AE6-F52EE51CA208}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9E711921-A0D1-4DBC-8AE6-F52EE51CA208}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9E711921-A0D1-4DBC-8AE6-F52EE51CA208}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B5D963D4-C99B-4AD9-9E7F-B76393AD5C64}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B5D963D4-C99B-4AD9-9E7F-B76393AD5C64}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B5D963D4-C99B-4AD9-9E7F-B76393AD5C64}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B5D963D4-C99B-4AD9-9E7F-B76393AD5C64}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4084F5CD-91EE-4B54-B866-1B2FDA7E1A30}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4084F5CD-91EE-4B54-B866-1B2FDA7E1A30}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4084F5CD-91EE-4B54-B866-1B2FDA7E1A30}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4084F5CD-91EE-4B54-B866-1B2FDA7E1A30}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -138,6 +146,10 @@ Global
 		{6F519FC0-8F12-4369-AB44-7723D55AB492} = {C8F6BF9B-C8C5-4A64-B5DE-D1766656D789}
 		{8B3B1545-FDD9-48A0-86C7-F2562BB32E8C} = {1D2F83A2-20A2-4F65-B4FB-E2B3668F2C27}
 		{B8651EE2-C664-4861-BF11-7B45FA361A83} = {1D2F83A2-20A2-4F65-B4FB-E2B3668F2C27}
+		{0A3F7789-B527-46BE-AB79-4D85230A55A5} = {62D898CA-0916-4928-9BFE-763B3E7DACAA}
+		{9E711921-A0D1-4DBC-8AE6-F52EE51CA208} = {0A3F7789-B527-46BE-AB79-4D85230A55A5}
+		{B5D963D4-C99B-4AD9-9E7F-B76393AD5C64} = {0A3F7789-B527-46BE-AB79-4D85230A55A5}
+		{4084F5CD-91EE-4B54-B866-1B2FDA7E1A30} = {0A3F7789-B527-46BE-AB79-4D85230A55A5}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F7BCA981-A7C5-40F4-ADBB-1004184ECB6B}
