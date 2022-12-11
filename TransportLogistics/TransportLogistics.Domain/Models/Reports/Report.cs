@@ -1,17 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using TransportLogistics.Domain.Models.Orders;
 
 namespace TransportLogistics.Domain.Models.Reports
 {
     class Report
     {
         public int ReportId { get; set; }
-        public Datetime DateStart { get; set; }
-        public Datetime DateEnd { get; set; }
-        public List<Order> Oeders { get; set; }
-
+        public DateTime DateStart { get; set; }
+        public DateTime DateEnd { get; set; }
+        public List<Order> Orders { get; set; }
     }
 }
