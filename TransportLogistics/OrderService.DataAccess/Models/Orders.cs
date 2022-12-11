@@ -1,13 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿using TransportLogistics.Domain.Enums.Orders;
 namespace OrderService.DataAccess.Models
 {
     public class Orders
     {
-        public int Id { get; set; }
+        public long Id { get; set; }
+        public string OrderDescription { get; set; } = string.Empty;
+        public OrderStatus Status { get; set; }
+
     }
 }
