@@ -1,8 +1,10 @@
-﻿namespace TransportLogistics.Domain.Models.Users;
+﻿using TransportLogistics.Domain.Enums.Users;
+
+namespace TransportLogistics.Domain.Models.Users;
 
 public class User
 {
-    public int UserId { get; set; }
+    public Guid Id { get; set; }
 
     public string FirstName { get; set; } = string.Empty;
 
@@ -11,4 +13,6 @@ public class User
     public string Email { get; set; } = string.Empty;
 
     public string Password { get; set; } = string.Empty;
+
+    public UserRole Role { get; set; }
 }

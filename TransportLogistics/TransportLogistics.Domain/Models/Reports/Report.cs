@@ -4,7 +4,7 @@ namespace TransportLogistics.Domain.Models.Reports
 {
     class Report
     {
-        public int ReportId { get; set; }
+        public int Id { get; set; }
         public DateTime DateStart { get; set; }
         public DateTime DateEnd { get; set; }
         public List<Order> Orders { get; set; }

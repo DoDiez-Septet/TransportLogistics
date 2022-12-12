@@ -2,13 +2,16 @@
 
 internal class Customer
 {
-    public int CustomerId { get; set; }
+    public Guid Id { get; set; }
 
-    public string CustomerFirstName { get; set; } = string.Empty;
+    public string Name { get; set; } = string.Empty;
 
-    public string CustomerLastName { get; set; } = string.Empty;
+    public string PhoneNumber { get; set; } = string.Empty;
 
     public string Email { get; set; } = string.Empty;
 
-    // Можно добавить объект Address
+    public string Address { get; set; } = string.Empty;
+
+    public string ContactPerson { get; set; } = string.Empty;
+
 }
