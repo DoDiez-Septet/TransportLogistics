@@ -21,4 +21,6 @@ public class Order
     public decimal Price { get; set; }
 
     public Guid CustomerId { get; set; }
+
+    public Guid UserId { get; set; }
 }
