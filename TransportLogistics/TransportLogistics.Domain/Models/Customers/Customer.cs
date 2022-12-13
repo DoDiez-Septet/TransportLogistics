@@ -1,14 +1,39 @@
-﻿namespace TransportLogistics.Domain.Models.Customers;
-
-internal class Customer
+﻿namespace TransportLogistics.Domain.Models.Customers
 {
-    public int CustomerId { get; set; }
+    /// <summary>
+    /// Класс Заказчик
+    /// </summary>
+    internal class Customer
+    {
+        /// <summary>
+        /// Идентификатор заказчика
+        /// </summary>
+        public Guid Id { get; set; }
 
-    public string CustomerFirstName { get; set; } = string.Empty;
+        /// <summary>
+        /// Наименования заказчика
+        /// </summary>
+        public string Name { get; set; }
 
-    public string CustomerLastName { get; set; } = string.Empty;
+        /// <summary>
+        /// Телефон заказчика
+        /// </summary>
+        public string PhoneNumber { get; set; }
 
-    public string Email { get; set; } = string.Empty;
+        /// <summary>
+        /// Email заказчика
+        /// </summary>
+        public string Email { get; set; }
 
-    // Можно добавить объект Address
+        /// <summary>
+        /// Адрес заказчика
+        /// </summary>
+        public string Address { get; set; }
+
+        /// <summary>
+        /// Контактное лицо заказчика
+        /// </summary>
+        public string ContactPerson { get; set; }
+
+    }
 }

@@ -1,13 +1,17 @@
-﻿namespace TransportLogistics.Domain.Enums.Orders;
-
-public enum OrderStatus
+﻿namespace TransportLogistics.Domain.Enums.Orders
 {
-    Received = 1,
-    Confirmed = 2,
-    Loading = 3,
-    Loaded = 4,
-    Delivering = 5,
-    Delivered = 6,
-    WaitingForConsumer = 7,
-    Closed = 8
+    /// <summary>
+    /// Статус перевозки
+    /// </summary>
+    public enum OrderStatus
+    {
+        Received = 1,
+        Confirmed = 2,
+        Loading = 3,
+        Loaded = 4,
+        Delivering = 5,
+        Delivered = 6,
+        WaitingForConsumer = 7,
+        Closed = 8
+    }
 }
