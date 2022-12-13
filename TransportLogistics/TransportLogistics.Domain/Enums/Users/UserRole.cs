@@ -1,8 +1,12 @@
-﻿namespace TransportLogistics.Domain.Enums.Users;
-
-public enum UserRole
+﻿namespace TransportLogistics.Domain.Enums.Users
 {
-    Admin = 1,
-    InternalUser = 2,
-    ExternalUser = 3
+    /// <summary>
+    /// Роли пользователя
+    /// </summary>
+    public enum UserRole
+    {
+        Admin = 1,
+        InternalUser = 2,
+        ExternalUser = 3
+    }
 }

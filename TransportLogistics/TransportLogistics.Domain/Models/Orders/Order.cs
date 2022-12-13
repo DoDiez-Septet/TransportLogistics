@@ -1,26 +1,60 @@
 ﻿using TransportLogistics.Domain.Enums.Orders;
 
-namespace TransportLogistics.Domain.Models.Orders;
-
-public class Order
+namespace TransportLogistics.Domain.Models.Orders
 {
-    public Guid Id { get; set; }
+    /// <summary>
+    /// Класс Заказа на перевозку
+    /// </summary>
+    public class Order
+    {
+        /// <summary>
+        /// Идентификатор заказ
+        /// </summary>
+        public Guid Id { get; set; }
 
-    public string Number { get; set; } = string.Empty;
+        /// <summary>
+        /// Номер заказа
+        /// </summary>
+        public string Number { get; set; }
 
-    public DateTime Date { get; set; } = DateTime.Now;
+        /// <summary>
+        /// Дата заказа
+        /// </summary>
+        public DateTime Date { get; set; } = DateTime.Now;
 
-    public string Description { get; set; } = string.Empty;
+        /// <summary>
+        /// Комментарии к заказу
+        /// </summary>
+        public string Description { get; set; }
 
-    public OrderStatus Status { get; set; }
+        /// <summary>
+        /// Статус заказа
+        /// </summary>
+        public OrderStatus Status { get; set; }
 
-    public string From { get; set; } = string.Empty;
+        /// <summary>
+        /// Пункт отправки заказа
+        /// </summary>
+        public string PointOfDeparture { get; set; }
 
-    public string To { get; set; } = string.Empty;
+        /// <summary>
+        /// Пункт получения заказа
+        /// </summary>
+        public string PointOfDestination { get; set; }
 
-    public decimal Price { get; set; }
+        /// <summary>
+        /// Общая стоимость заказа
+        /// </summary>
+        public decimal Price { get; set; }
 
-    public Guid CustomerId { get; set; }
+        /// <summary>
+        /// Ссылка на заказчика
+        /// </summary>
+        public Guid CustomerId { get; set; }
 
-    public Guid UserId { get; set; }
+        /// <summary>
+        /// Ссылка на пользователя
+        /// </summary>
+        public Guid UserId { get; set; }
+    }
 }

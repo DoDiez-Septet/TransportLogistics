@@ -1,29 +1,48 @@
-﻿namespace TransportLogistics.Domain.Models.Orders;
-
-public class OrderDetail
+﻿namespace TransportLogistics.Domain.Models.Orders
 {
-    public Guid Id { get; set; }
-
-    public Guid OrderId { get; set; }
-
-    public string UnitDescription { get; set; } = string.Empty;
-
-    public decimal UnitPrice { get; set; }
-
     /// <summary>
-    /// В см - поэтому используем целое число
+    /// Класс Грузы в первозке
     /// </summary>
-    public int Widtht { get; set; }
+    public class OrderDetail
+    {
+        /// <summary>
+        /// Идентификатор груза
+        /// </summary>
+        public Guid Id { get; set; }
 
-    /// <summary>
-    /// В см - поэтому используем целое число
-    /// </summary>
-    public int Height { get; set; }
+        /// <summary>
+        /// Ссылка на заказ
+        /// </summary>
+        public Guid OrderId { get; set; }
 
-    /// <summary>
-    /// В см - поэтому используем целое число
-    /// </summary>
-    public int Length { get; set; }
+        /// <summary>
+        /// Описание груза
+        /// </summary>
+        public string UnitDescription { get; set; }
 
-    public int Weight { get; set; }
+        /// <summary>
+        /// Цена перевозки груза
+        /// </summary>
+        public decimal UnitPrice { get; set; }
+
+        /// <summary>
+        /// Ширина в см - поэтому используем целое число
+        /// </summary>
+        public int Widtht { get; set; }
+
+        /// <summary>
+        /// Высота грузагруза в см - поэтому используем целое число
+        /// </summary>
+        public int Height { get; set; }
+
+        /// <summary>
+        /// Длина груза в см - поэтому используем целое число
+        /// </summary>
+        public int Length { get; set; }
+
+        /// <summary>
+        /// Вес груза в кг
+        /// </summary>
+        public int Weight { get; set; }
+    }
 }
