@@ -7,7 +7,7 @@ namespace OrderService.DataAccess.Models
         /// <summary>
         /// Контекст БД
         /// </summary>
-        private readonly AppFactory _appFactory;
+        public readonly AppFactory _appFactory;
 
         public RepoEF(AppFactory appFactory)
         {
@@ -18,18 +18,25 @@ namespace OrderService.DataAccess.Models
         /// Получить все записи из таблицы.
         /// </summary>
         /// <returns></returns>
-        public async Task<IEnumerable<T>> Get()
+        public IEnumerable<T> AllBase => _appFactory.Set<T>();
+
+
+        /// <summary>
+        /// Виртуальный метод получения всех записей из таблицы 
+        /// Переопределяется для зависимых таблиц
+        /// </summary>
+        /// <returns></returns>
+        public virtual async Task<List<T>> Get()
         {
             return await _appFactory.Set<T>().ToListAsync();
         }
-
 
         /// <summary>
         /// Получить запись по id
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        public async Task<T> Get(int id)
+        public async Task<T> Get(Guid id)
         {
             return await _appFactory.Set<T>().FirstOrDefaultAsync(x => x.Id == id);
         }
@@ -61,7 +68,7 @@ namespace OrderService.DataAccess.Models
         /// </summary>
         /// <param name="entity">Образ записи</param>
         /// <returns></returns>
-        public async Task<bool> Update(T entity)
+        public virtual async Task<bool> Update(T entity)
         {
             var existEntity = _appFactory.Set<T>().FirstOrDefaultAsync(x => x.Id == entity.Id).Result;
             if (existEntity != null)
@@ -80,7 +87,7 @@ namespace OrderService.DataAccess.Models
         /// </summary>
         /// <param name="id">id для удаления</param>
         /// <returns></returns>
-        public async Task<bool> Delete(int id)
+        public async Task<bool> Delete(Guid id)
         {
             var existEntity = _appFactory.Set<T>().FirstOrDefaultAsync(x => x.Id == id).Result;
             if (existEntity != null)
