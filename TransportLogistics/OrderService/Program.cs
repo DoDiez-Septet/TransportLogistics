@@ -1,5 +1,5 @@
-using Microsoft.EntityFrameworkCore;
-using OrderService.DataAccess.Models;
+global using Microsoft.EntityFrameworkCore;
+global using OrderService.DataAccess.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,8 +10,13 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddScoped(typeof(IRepository<>), typeof(RepoEF<>));
+builder.Services.AddScoped<IUserRepoEF, UserRepoEF>();
+
 builder.Services.AddDbContextFactory<AppFactory>(
-                options => options.UseSqlServer("name=ConnectionStrings:WebApiDatabase"));
+                options => options.UseSqlServer("name=ConnectionStrings:WebApiDatabase",
+                x => x.MigrationsAssembly("OrderService.DataAccess")));
+
 
 var app = builder.Build();
 

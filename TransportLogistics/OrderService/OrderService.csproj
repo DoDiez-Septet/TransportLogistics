@@ -17,11 +17,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\OrderService.BusinessLogic\OrderService.BusinessLogic.csproj" />
     <ProjectReference Include="..\OrderService.DataAccess\OrderService.DataAccess.csproj" />
   </ItemGroup>
 
