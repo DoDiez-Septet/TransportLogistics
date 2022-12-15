@@ -18,6 +18,8 @@ builder.Services.AddDbContextFactory<AppFactory>(
                 x => x.MigrationsAssembly("OrderService.DataAccess")));
 
 
+
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
