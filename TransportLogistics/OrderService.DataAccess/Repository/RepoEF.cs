@@ -1,6 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-
-namespace OrderService.DataAccess.Models
+﻿namespace OrderService.DataAccess.Repository
 {
     public class RepoEF<T> : IRepository<T> where T : TableBase
     {

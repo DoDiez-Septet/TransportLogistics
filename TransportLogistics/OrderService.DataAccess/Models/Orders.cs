@@ -1,4 +1,5 @@
 ﻿using TransportLogistics.Domain.Enums.Orders;
+
 namespace OrderService.DataAccess.Models
 {
     public class Orders : TableBase

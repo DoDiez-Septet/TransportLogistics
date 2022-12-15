@@ -1,7 +1,4 @@
-﻿
-using TransportLogistics.Domain.Enums.Users;
-
-namespace OrderService.DataAccess.Models
+﻿namespace OrderService.DataAccess.Models
 {
     public class OSUser : TableBase
     {

@@ -1,14 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace OrderService.DataAccess.Models
+﻿namespace OrderService.DataAccess.Repository
 {
     public class UserRepoEF : RepoEF<OSUser>, IUserRepoEF
     {
-
         public UserRepoEF(AppFactory appFactory) : base(appFactory)
         {}
 

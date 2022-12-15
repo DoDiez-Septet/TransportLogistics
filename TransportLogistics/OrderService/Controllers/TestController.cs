@@ -5,42 +5,23 @@ namespace OrderService.Controllers
     [ApiController]
     public class TestController : Controller
     {
-        private readonly IRepository<OSUser> _userContext;
-        private readonly IUserRepoEF _userRepo;
+        private readonly ExecuteAPI _Context;
 
-        public TestController(IRepository<OSUser> repository, IUserRepoEF userRepoEF)
+        public TestController(ExecuteAPI executeAPI)
         {
-            _userContext = repository;
-            _userRepo = userRepoEF;
+            _Context = executeAPI;
         }
 
 
         [HttpPost]
         [Route("/test/insertUser")]
-        public async Task CreateTestUser()
+        public Task CreateTestUser()
         {
-            Guid userId = Guid.NewGuid();
-            await _userContext.Add(new OSUser
-            {
-                Id = userId,
-                FirstName = "TestUser1",
-                LastName = "Last1",
-                Email = "email@com2"
-            });
+            _Context.CreateUser();
+            return Task.CompletedTask;
             
         }
 
-        [HttpPost, Route("/test/Update")]
-        public async Task UpdateTestUser()
-        {
-            OSUser user = new OSUser()
-            {
-                Id = new Guid("0ECB7035-E111-48CF-BC87-0D671DA76F67"),
-                FirstName = "Новое имя 4",
-                LastName = "Last1",
-                Email = "email@com2"
-            };
-            _userRepo.Update(user);
-        }
+        
     }
 }
