@@ -12,7 +12,6 @@
     <Folder Include="Interfaces\Users\" />
     <Folder Include="Interfaces\Reports\" />
     <Folder Include="Interfaces\Notification\" />
-    <Folder Include="Models\Notification\" />
   </ItemGroup>
 
 </Project>
