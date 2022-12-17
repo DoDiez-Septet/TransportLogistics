@@ -1,27 +1,31 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using OrderService.DataAccess.Interfaces;
 
 namespace OrderService.Controllers
 {
     [ApiController]
     public class TestController : Controller
     {
-        private readonly ExecuteAPI _Context;
+        private readonly IUserRepoEF _Context;
 
-        public TestController(ExecuteAPI executeAPI)
+        public TestController(IUserRepoEF userRepoEF)
         {
-            _Context = executeAPI;
+            _Context = userRepoEF;
         }
 
 
         [HttpPost]
         [Route("/test/insertUser")]
-        public Task CreateTestUser()
+        public async Task<Guid> CreateTestUser()
         {
-            _Context.CreateUser();
-            return Task.CompletedTask;
-            
-        }
+            Guid id = await _Context.Add(new DataAccess.Models.OSUser()
+            {
+                FirstName = "InitFirstName",
+                LastName = DateTime.Now.ToString("hh.mm.ss")
+            });
 
+            return id;
+        }
         
     }
 }

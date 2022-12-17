@@ -44,12 +44,15 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UserService.DataAccess", "UserService.DataAccess\UserService.DataAccess.csproj", "{B8651EE2-C664-4861-BF11-7B45FA361A83}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "OrderService", "OrderService", "{0A3F7789-B527-46BE-AB79-4D85230A55A5}"
+	ProjectSection(SolutionItems) = preProject
+		OrderService\ClearBase.sql = OrderService\ClearBase.sql
+	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderService.BusinessLogic", "OrderService.BusinessLogic\OrderService.BusinessLogic.csproj", "{B5D963D4-C99B-4AD9-9E7F-B76393AD5C64}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OrderService.BusinessLogic", "OrderService.BusinessLogic\OrderService.BusinessLogic.csproj", "{B5D963D4-C99B-4AD9-9E7F-B76393AD5C64}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderService.DataAccess", "OrderService.DataAccess\OrderService.DataAccess.csproj", "{4084F5CD-91EE-4B54-B866-1B2FDA7E1A30}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OrderService.DataAccess", "OrderService.DataAccess\OrderService.DataAccess.csproj", "{4084F5CD-91EE-4B54-B866-1B2FDA7E1A30}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderService", "OrderService\OrderService.csproj", "{BE397E47-17FC-4AFA-8604-1E7EAA64A9B7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OrderService", "OrderService\OrderService.csproj", "{BE397E47-17FC-4AFA-8604-1E7EAA64A9B7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -45,19 +45,19 @@
         /// </summary>
         /// <param name="entity">Образ записи</param>
         /// <returns>
-        /// True - в случае успешного добавления записи
-        /// False - если запись с таким id уже существует
+        /// Присвоенный Guid - в случае успешного добавления записи
+        /// Guid.Empty - если запись с таким id уже существует
         /// </returns>
-        public async Task<bool> Add(T entity)
+        public async Task<Guid> Add(T entity)
         {
             var existEntity = _appFactory.Set<T>().CountAsync(x => x.Id == entity.Id).Result;
             if (existEntity == 0)
             {
                 await _appFactory.Set<T>().AddAsync(entity);
                 await _appFactory.SaveChangesAsync();
-                return true;
+                return entity.Id;
             }
-            return false;
+            return Guid.Empty;
         }
 
 

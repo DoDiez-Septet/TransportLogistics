@@ -1,4 +1,4 @@
-﻿namespace OrderService.DataAccess.Repository
+﻿namespace OrderService.DataAccess.Interfaces
 {
     public interface IUserRepoEF : IRepository<OSUser>
     {

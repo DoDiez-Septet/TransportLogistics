@@ -1,8 +1,5 @@
 global using Microsoft.EntityFrameworkCore;
-global using OrderService.DataAccess.Models;
-global using OrderService.DataAccess.Repository;
-global using OrderService.DataAccess.API;
-using OrderService.DataAccess;
+global using OrderService.BusinessLogic;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,8 +8,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 
-builder.Services.AddDataAccess();
-
+builder.Services.AddBusinessLogic();
 
 var app = builder.Build();
 
