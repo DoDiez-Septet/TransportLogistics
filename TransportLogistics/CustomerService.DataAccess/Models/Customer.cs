@@ -1,8 +1,11 @@
-﻿namespace TransportLogistics.Domain.Models.Customers
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace CustomerService.DataAccess.Models
 {
-    /// <summary>
-    /// Класс Заказчик
-    /// </summary>
     public class Customer
     {
         /// <summary>
@@ -34,6 +37,5 @@
         /// Контактное лицо заказчика
         /// </summary>
         public string ContactPerson { get; set; }
-
     }
 }
