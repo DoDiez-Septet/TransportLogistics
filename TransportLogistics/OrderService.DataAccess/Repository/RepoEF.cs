@@ -9,7 +9,7 @@
 
         public RepoEF(AppFactory appFactory)
         {
-            _appFactory = appFactory;
+            _appFactory = appFactory ?? throw new Exception("Ошибка при работе с БД");
         }
 
         /// <summary>

@@ -1,7 +1,9 @@
 ﻿global using OrderService.DataAccess.Interfaces;
+global using OrderService.DataAccess.Repository;
+global using OrderService.BusinessLogic.Models;
 using Microsoft.Extensions.DependencyInjection;
 using OrderService.DataAccess;
-
+using OrderService.BusinessLogic.Services;
 
 namespace OrderService.BusinessLogic
 {
@@ -11,6 +13,7 @@ namespace OrderService.BusinessLogic
         {
             return
             services
+            .AddScoped<IPointOper, PointOper>()
             .AddDataAccess();
         }
         
