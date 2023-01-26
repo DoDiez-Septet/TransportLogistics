@@ -14,7 +14,7 @@ namespace CustomerService.DataAccess.Repos
     public interface IRepository<T, TPrimaryKey>
         where T : IEntity<TPrimaryKey>
     {
-        IQueryable<T> GetAll();
+        IQueryable<T> GetAll(bool noTracking = false);
 
         T GetByPrimaryKey(TPrimaryKey id);
         bool Delete(TPrimaryKey id);
