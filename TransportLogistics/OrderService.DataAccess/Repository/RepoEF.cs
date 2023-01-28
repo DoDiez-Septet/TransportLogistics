@@ -5,7 +5,7 @@
         /// <summary>
         /// Контекст БД
         /// </summary>
-        public readonly AppFactory _appFactory;
+        protected readonly AppFactory _appFactory;
 
         public RepoEF(AppFactory appFactory)
         {
@@ -68,12 +68,12 @@
         /// <returns></returns>
         public virtual async Task<bool> Update(T entity)
         {
-            var existEntity = _appFactory.Set<T>().FirstOrDefaultAsync(x => x.Id == entity.Id).Result;
+            var existEntity = await _appFactory.Set<T>().FirstOrDefaultAsync(x => x.Id == entity.Id);
             if (existEntity != null)
             {
                 _appFactory.Set<T>().Remove(existEntity);
                 _appFactory.Set<T>().Add(entity);
-                await _appFactory.SaveChangesAsync();
+                _appFactory.SaveChanges();
                 return true;
             }
             return false;
@@ -85,9 +85,9 @@
         /// </summary>
         /// <param name="id">id для удаления</param>
         /// <returns></returns>
-        public async Task<bool> Delete(Guid id)
+        public virtual async Task<bool> Delete(T entity)
         {
-            var existEntity = _appFactory.Set<T>().FirstOrDefaultAsync(x => x.Id == id).Result;
+            var existEntity = _appFactory.Set<T>().FirstOrDefaultAsync(x => x.Id == entity.Id).Result;
             if (existEntity != null)
             {
                 _appFactory.Set<T>().Remove(existEntity);

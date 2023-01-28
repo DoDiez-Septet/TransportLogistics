@@ -10,5 +10,7 @@ namespace OrderService.BusinessLogic.Services
     {
         public Task<List<IPoint>> Get(string pointname = "");
         public Task Add(IPoint point);
+        public Task<bool> Update(IPoint point);
+        public Task<bool> Delete(string pointName);
     }
 }

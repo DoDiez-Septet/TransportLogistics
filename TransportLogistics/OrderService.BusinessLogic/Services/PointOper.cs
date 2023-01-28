@@ -4,9 +4,9 @@ namespace OrderService.BusinessLogic.Services
 {
     public class PointOper : IPointOper
     {
-        private readonly IRepository<Point> _repo;
+        private readonly IPointRepoEF _repo;
         
-        public PointOper(IRepository<Point> irepo)
+        public PointOper(IPointRepoEF irepo)
         {
             _repo = irepo;
         }
@@ -45,17 +45,17 @@ namespace OrderService.BusinessLogic.Services
 
         public async Task<bool> Update(IPoint point)
         {
-            var oldPoint = _repo.AllBase.FirstOrDefault(p => p.Name == point.Name);
-            if (oldPoint == null)
+            TPoint tPoint = new()
             {
-                Exception ex = new("Точка не найдена!");
-                ex.Data.Add("status", HttpStatusCode.NotFound);
-                throw ex;
-            }
+                Name = point.Name,
+                Comment = point.Comment
+            };
+            return await _repo.Update(tPoint);
+        }
 
-            oldPoint.Name = point.Name;
-            oldPoint.Comment = point.Comment;
-            return await _repo.Update(oldPoint);
+        public async Task<bool> Delete(string pointName)
+        {
+            return await _repo.Delete(pointName);
         }
     }
 }

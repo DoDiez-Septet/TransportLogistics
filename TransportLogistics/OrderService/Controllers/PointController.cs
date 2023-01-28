@@ -21,16 +21,28 @@ namespace OrderService.Controllers
         }
 
         [HttpGet("/get/{name}")]
-        public Task<List<IPoint>> Get(string name)
+        public async Task<List<IPoint>> Get(string name)
         {
-            return _pointOper.Get(name);
+            return await _pointOper.Get(name);
         }
 
         [HttpPut("/put")]
-        public Task Put(DPoint point )
+        public async Task Put(DPoint point )
         {
-            return _pointOper.Add(point);
+            await _pointOper.Add(point);
         }
-        
+
+        [HttpPost("/update")]
+        public async Task<bool> Update(DPoint point)
+        {
+            return await _pointOper.Update(point);
+        }
+
+        [HttpDelete("/delete")]
+        public async Task<bool> Delete(string pointName)
+        {
+            return await _pointOper.Delete(pointName);
+        }
+
     }
 }

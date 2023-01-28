@@ -15,6 +15,7 @@ namespace OrderService.DataAccess
             .AddDbContextFactory<AppFactory>()
             .AddScoped(typeof(IRepository<>), typeof(RepoEF<>))
             .AddScoped<IUserRepoEF, UserRepoEF>()
+            .AddScoped<IPointRepoEF, PointRepoEF>()
             ;
         }
     }

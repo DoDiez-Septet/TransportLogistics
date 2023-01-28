@@ -29,7 +29,7 @@ namespace OrderService.HandleExceptions
 
             if (exception.Data.Contains("status"))
             {
-                context.Response.StatusCode = (int)exception.Data["status"];
+                context.Response.StatusCode = (int)(exception?.Data["status"] ?? HttpStatusCode.InternalServerError);
             }
             else
             {
@@ -38,7 +38,7 @@ namespace OrderService.HandleExceptions
             
             var result = JsonConvert.SerializeObject(new
             {
-                ErrorMessage = exception.Message
+                ErrorMessage = exception?.Message
             });
             context.Response.ContentType = "application/json";
             return context.Response.WriteAsync(result);
