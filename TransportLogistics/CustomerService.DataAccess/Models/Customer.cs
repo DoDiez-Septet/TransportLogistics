@@ -14,7 +14,7 @@ namespace CustomerService.DataAccess.Models
         public Guid Id { get; set; }
 
         /// <summary>
-        /// Наименования заказчика
+        /// Наименование заказчика
         /// </summary>
         public string Name { get; set; }
 
