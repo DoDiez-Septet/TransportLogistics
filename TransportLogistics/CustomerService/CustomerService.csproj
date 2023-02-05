@@ -14,4 +14,9 @@
     <Folder Include="Controllers\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\CustomerService.BusinessLogic\CustomerService.BusinessLogic.csproj" />
+    <ProjectReference Include="..\CustomerService.DataAccess\CustomerService.DataAccess.csproj" />
+  </ItemGroup>
+
 </Project>
