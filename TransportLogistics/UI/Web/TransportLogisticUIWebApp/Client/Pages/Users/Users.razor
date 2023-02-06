@@ -1,0 +1,86 @@
+﻿@page "/users"
+@using TransportLogisticUIWebApp.Client.Models;
+@*@inject HttpClient httpClient*@
+
+<h3>Пользователи</h3>
+
+<div class="row">
+    <div class="col-12 mt-4">
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <td>Name</td>
+                        <td>Mobile</td>
+                        <td>Email</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><input class="form-control" @bind="newUser.FirstName" placeholder="Name" /></td>
+                        <td><input class="form-control" @bind="newUser.LastName" placeholder="Mobile" /></td>
+                        <td><input class="form-control" @bind="newUser.Email" placeholder="Email" /></td>
+                        <td class="pt-3"><a @onclick="SaveUser" href="javascript:void(0)"><i class="oi oi-thumb-up"></i></a></td>
+                        <td></td>
+                    </tr>
+                    @if (users != null && users.Count != 0)
+                    {
+                        foreach (var customer in users)
+                        {
+                            <UserRecord 
+                                User="customer"
+                                UpdateUser="UpdateUser"
+                                DeleteUser="DeleteUser"></UserRecord>
+                        }
+                    }
+                    else
+                    {
+                        <tr>
+                            <td class="text-center" colspan="5">No user records to display</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+@code {
+    private List<UserViewModel> users = new List<UserViewModel>();
+    private UserViewModel newUser = new UserViewModel();
+
+    protected override async Task OnInitializedAsync()
+    {
+        await base.OnInitializedAsync();
+        await FetchUserList();
+    }
+
+    private async Task FetchUserList()
+    {
+        //customers = await httpClient.GetFromJsonAsync<List<CustomerViewModel>>("/api/Customer");
+    }
+
+    private async Task SaveUser()
+    {
+        users.Add(newUser);
+
+        newUser = new UserViewModel();
+        //await httpClient.PostAsJsonAsync<CustomerViewModel>("/api/Customer", newCustomer);
+        //await FetchCustomerList();
+        //newCustomer = new CustomerViewModel();
+    }
+
+    private async Task UpdateUser()//CustomerViewModel cutomer)
+    {
+        //await httpClient.PutAsJsonAsync<CustomerViewModel>("/api/Customer", cutomer);
+        //await FetchCustomerList();
+    }
+
+    private async Task DeleteUser(int customerId)
+    {
+       //var result = await httpClient.DeleteAsync($"/api/Customer/{customerId}");
+       // await FetchCustomerList();
+    }
+}

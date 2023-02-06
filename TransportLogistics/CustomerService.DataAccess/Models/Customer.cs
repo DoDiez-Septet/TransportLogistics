@@ -1,9 +1,12 @@
-﻿namespace TransportLogistics.Domain.Models.Customers
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace CustomerService.DataAccess.Models
 {
-    /// <summary>
-    /// Класс Заказчик
-    /// </summary>
-    public class Customer
+    public class Customer : IEntity<Guid>
     {
         /// <summary>
         /// Идентификатор заказчика
@@ -11,7 +14,7 @@
         public Guid Id { get; set; }
 
         /// <summary>
-        /// Наименования заказчика
+        /// Наименование заказчика
         /// </summary>
         public string Name { get; set; }
 
@@ -34,6 +37,5 @@
         /// Контактное лицо заказчика
         /// </summary>
         public string ContactPerson { get; set; }
-
     }
 }
