@@ -1,4 +1,6 @@
-﻿namespace OrderService.DataAccess.Repository
+﻿using TransportLogistics.Domain.Models.Order;
+
+namespace OrderService.DataAccess.Repository
 {
     public class OrderRepoEF : RepoEF<Orders>, IOrderRepoEF
     {
@@ -10,8 +12,8 @@
             return await _appFactory.orders
                 .Include(x => x.PointOfDeparture)
                 .Include(x => x.PointOfDestination)
-                .Include(x => x.OSUser)
-                .Include(x => x.OSCustomer)
+                .Include(x => x.User)
+                .Include(x => x.Customer)
                 .Include(x => x.OrderLine)
                 .ToListAsync();
         }

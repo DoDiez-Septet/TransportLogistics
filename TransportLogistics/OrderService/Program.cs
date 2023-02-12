@@ -2,7 +2,6 @@ global using Newtonsoft.Json;
 global using Microsoft.EntityFrameworkCore;
 global using OrderService.BusinessLogic;
 global using OrderService.BusinessLogic.Services;
-global using OrderService.BusinessLogic.Models;
 using OrderService.HandleExceptions;
 
 var builder = WebApplication.CreateBuilder(args);

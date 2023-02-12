@@ -1,6 +1,8 @@
-﻿namespace OrderService.DataAccess.Repository
+﻿using TransportLogistics.Domain.Models;
+
+namespace OrderService.DataAccess.Repository
 {
-    public class RepoEF<T> : IRepository<T> where T : TableBase
+    public class RepoEF<T> : IRepository<T> where T : BaseTab
     {
         /// <summary>
         /// Контекст БД
@@ -66,28 +68,17 @@
         /// </summary>
         /// <param name="entity">Образ записи</param>
         /// <returns></returns>
-        public virtual async Task<bool> Update(T entity)
-        {
-            var existEntity = await _appFactory.Set<T>().FirstOrDefaultAsync(x => x.Id == entity.Id);
-            if (existEntity != null)
-            {
-                _appFactory.Set<T>().Remove(existEntity);
-                _appFactory.Set<T>().Add(entity);
-                _appFactory.SaveChanges();
-                return true;
-            }
-            return false;
-        }
-
+        public virtual Task<bool> Update(T entity) { return Task.FromResult(false); }
+       
 
         /// <summary>
         /// Удалить запись по id
         /// </summary>
         /// <param name="id">id для удаления</param>
         /// <returns></returns>
-        public virtual async Task<bool> Delete(T entity)
+        public virtual async Task<bool> Delete(Guid Id)
         {
-            var existEntity = _appFactory.Set<T>().FirstOrDefaultAsync(x => x.Id == entity.Id).Result;
+            var existEntity = _appFactory.Set<T>().FirstOrDefaultAsync(x => x.Id == Id).Result;
             if (existEntity != null)
             {
                 _appFactory.Set<T>().Remove(existEntity);

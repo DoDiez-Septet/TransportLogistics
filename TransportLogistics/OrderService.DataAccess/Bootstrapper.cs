@@ -16,6 +16,7 @@ namespace OrderService.DataAccess
             .AddScoped(typeof(IRepository<>), typeof(RepoEF<>))
             .AddScoped<IUserRepoEF, UserRepoEF>()
             .AddScoped<IPointRepoEF, PointRepoEF>()
+            .AddScoped<IOrderDetailRepoEF, OrderDetailRepoEF>()
             ;
         }
     }

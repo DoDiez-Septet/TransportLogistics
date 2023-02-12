@@ -1,6 +1,8 @@
-﻿namespace OrderService.DataAccess.Interfaces
+﻿using TransportLogistics.Domain.Models.Users;
+
+namespace OrderService.DataAccess.Interfaces
 {
-    public interface IUserRepoEF : IRepository<OSUser>
+    public interface IUserRepoEF : IRepository<User>
     {
     }
 }

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
+using TransportLogistics.Domain.Models.Points;
 
 namespace OrderService.DataAccess.Repository
 {
@@ -28,9 +29,9 @@ namespace OrderService.DataAccess.Repository
             return true;
         }
 
-        public override async Task<bool> Delete(Point point)
+        public override async Task<bool> Delete(Guid guid)
         {
-            var oldPoint = AllBase.FirstOrDefault(p => p.Name == point.Name);
+            var oldPoint = AllBase.FirstOrDefault(p => p.Id == guid);
             if (oldPoint == null)
             {
                 Exception ex = new("Точка не найдена!");

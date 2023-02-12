@@ -1,9 +1,9 @@
-﻿namespace TransportLogistics.Domain.Models.Orders
+﻿namespace TransportLogistics.Domain.Models.Order
 {
     /// <summary>
     /// Класс Грузы в первозке
     /// </summary>
-    public class OrderDetail
+    public class OrderDetail :BaseTab
     {
         /// <summary>
         /// Идентификатор груза

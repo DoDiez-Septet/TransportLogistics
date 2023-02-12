@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace OrderService.DataAccess.Migrations
 {
     /// <inheritdoc />
-    public partial class InitMigration : Migration
+    public partial class InitialCreate : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -32,7 +32,13 @@ namespace OrderService.DataAccess.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    Description = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    OrderId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    UnitDescription = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    UnitPrice = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    Widtht = table.Column<int>(type: "int", nullable: false),
+                    Height = table.Column<int>(type: "int", nullable: false),
+                    Length = table.Column<int>(type: "int", nullable: false),
+                    Weight = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -59,7 +65,9 @@ namespace OrderService.DataAccess.Migrations
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     FirstName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     LastName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Email = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Password = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Role = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -78,16 +86,16 @@ namespace OrderService.DataAccess.Migrations
                     PointOfDepartureId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     PointOfDestinationId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Price = table.Column<double>(type: "float", nullable: false),
-                    OSCustomerId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    OSUserId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    CustomerId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    UserId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     OrderLineId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_orders", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_orders_customers_OSCustomerId",
-                        column: x => x.OSCustomerId,
+                        name: "FK_orders_customers_CustomerId",
+                        column: x => x.CustomerId,
                         principalTable: "customers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
@@ -108,27 +116,22 @@ namespace OrderService.DataAccess.Migrations
                         principalTable: "point",
                         principalColumn: "Id");
                     table.ForeignKey(
-                        name: "FK_orders_user_OSUserId",
-                        column: x => x.OSUserId,
+                        name: "FK_orders_user_UserId",
+                        column: x => x.UserId,
                         principalTable: "user",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
+                name: "IX_orders_CustomerId",
+                table: "orders",
+                column: "CustomerId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_orders_OrderLineId",
                 table: "orders",
                 column: "OrderLineId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_orders_OSCustomerId",
-                table: "orders",
-                column: "OSCustomerId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_orders_OSUserId",
-                table: "orders",
-                column: "OSUserId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_orders_PointOfDepartureId",
@@ -139,6 +142,11 @@ namespace OrderService.DataAccess.Migrations
                 name: "IX_orders_PointOfDestinationId",
                 table: "orders",
                 column: "PointOfDestinationId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_orders_UserId",
+                table: "orders",
+                column: "UserId");
         }
 
         /// <inheritdoc />

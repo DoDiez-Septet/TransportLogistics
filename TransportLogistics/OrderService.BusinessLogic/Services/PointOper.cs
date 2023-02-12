@@ -1,4 +1,6 @@
 ﻿using System.Net;
+using TransportLogistics.Domain.Interfaces;
+using TransportLogistics.Domain.Models.Points;
 
 namespace OrderService.BusinessLogic.Services
 {
@@ -18,14 +20,14 @@ namespace OrderService.BusinessLogic.Services
                 _repo.AllBase.Where(p => p.Name.ToLower().Contains(pointname.ToLower())).ToList();
 
             List<IPoint> resultList = new List<IPoint>();
-            result.ForEach(p => resultList.Add(TPoint.Convert(p)));
+            result.ForEach(p => resultList.Add(p));
 
             return Task.FromResult(resultList);
         }
 
         public async Task Add(IPoint point)
         {
-            TPoint tPoint = new()
+            Point tPoint = new()
             {
                 Name = point.Name,
                 Comment = point.Comment
@@ -45,7 +47,7 @@ namespace OrderService.BusinessLogic.Services
 
         public async Task<bool> Update(IPoint point)
         {
-            TPoint tPoint = new()
+            Point tPoint = new()
             {
                 Name = point.Name,
                 Comment = point.Comment

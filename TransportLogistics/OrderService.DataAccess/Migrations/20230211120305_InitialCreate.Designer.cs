@@ -12,8 +12,8 @@ using OrderService.DataAccess.Models;
 namespace OrderService.DataAccess.Migrations
 {
     [DbContext(typeof(AppFactory))]
-    [Migration("20221216062208_InitMigration")]
-    partial class InitMigration
+    [Migration("20230211120305_InitialCreate")]
+    partial class InitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -25,7 +25,7 @@ namespace OrderService.DataAccess.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("OrderService.DataAccess.Models.OSCustomer", b =>
+            modelBuilder.Entity("TransportLogistics.Domain.Models.Customers.Customer", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -56,47 +56,46 @@ namespace OrderService.DataAccess.Migrations
                     b.ToTable("customers");
                 });
 
-            modelBuilder.Entity("OrderService.DataAccess.Models.OSUser", b =>
+            modelBuilder.Entity("TransportLogistics.Domain.Models.Order.OrderDetail", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("Height")
+                        .HasColumnType("int");
 
-                    b.Property<string>("FirstName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("Length")
+                        .HasColumnType("int");
 
-                    b.Property<string>("LastName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("user");
-                });
-
-            modelBuilder.Entity("OrderService.DataAccess.Models.OrderLine", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
+                    b.Property<Guid>("OrderId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<string>("Description")
+                    b.Property<string>("UnitDescription")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<decimal>("UnitPrice")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<int>("Weight")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Widtht")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
                     b.ToTable("ordersLine");
                 });
 
-            modelBuilder.Entity("OrderService.DataAccess.Models.Orders", b =>
+            modelBuilder.Entity("TransportLogistics.Domain.Models.Order.Orders", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("CustomerId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("Date")
@@ -108,12 +107,6 @@ namespace OrderService.DataAccess.Migrations
                     b.Property<string>("Number")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<Guid>("OSCustomerId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("OSUserId")
-                        .HasColumnType("uniqueidentifier");
 
                     b.Property<Guid>("OrderLineId")
                         .HasColumnType("uniqueidentifier");
@@ -130,11 +123,12 @@ namespace OrderService.DataAccess.Migrations
                     b.Property<int?>("Status")
                         .HasColumnType("int");
 
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uniqueidentifier");
+
                     b.HasKey("Id");
 
-                    b.HasIndex("OSCustomerId");
-
-                    b.HasIndex("OSUserId");
+                    b.HasIndex("CustomerId");
 
                     b.HasIndex("OrderLineId");
 
@@ -142,10 +136,12 @@ namespace OrderService.DataAccess.Migrations
 
                     b.HasIndex("PointOfDestinationId");
 
+                    b.HasIndex("UserId");
+
                     b.ToTable("orders");
                 });
 
-            modelBuilder.Entity("OrderService.DataAccess.Models.Point", b =>
+            modelBuilder.Entity("TransportLogistics.Domain.Models.Points.Point", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -163,47 +159,77 @@ namespace OrderService.DataAccess.Migrations
                     b.ToTable("point");
                 });
 
-            modelBuilder.Entity("OrderService.DataAccess.Models.Orders", b =>
+            modelBuilder.Entity("TransportLogistics.Domain.Models.Users.User", b =>
                 {
-                    b.HasOne("OrderService.DataAccess.Models.OSCustomer", "OSCustomer")
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FirstName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LastName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Password")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Role")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("user");
+                });
+
+            modelBuilder.Entity("TransportLogistics.Domain.Models.Order.Orders", b =>
+                {
+                    b.HasOne("TransportLogistics.Domain.Models.Customers.Customer", "Customer")
                         .WithMany()
-                        .HasForeignKey("OSCustomerId")
+                        .HasForeignKey("CustomerId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("OrderService.DataAccess.Models.OSUser", "OSUser")
-                        .WithMany()
-                        .HasForeignKey("OSUserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("OrderService.DataAccess.Models.OrderLine", "OrderLine")
+                    b.HasOne("TransportLogistics.Domain.Models.Order.OrderDetail", "OrderLine")
                         .WithMany()
                         .HasForeignKey("OrderLineId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("OrderService.DataAccess.Models.Point", "PointOfDeparture")
+                    b.HasOne("TransportLogistics.Domain.Models.Points.Point", "PointOfDeparture")
                         .WithMany()
                         .HasForeignKey("PointOfDepartureId")
                         .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
-                    b.HasOne("OrderService.DataAccess.Models.Point", "PointOfDestination")
+                    b.HasOne("TransportLogistics.Domain.Models.Points.Point", "PointOfDestination")
                         .WithMany()
                         .HasForeignKey("PointOfDestinationId")
                         .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
-                    b.Navigation("OSCustomer");
+                    b.HasOne("TransportLogistics.Domain.Models.Users.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
-                    b.Navigation("OSUser");
+                    b.Navigation("Customer");
 
                     b.Navigation("OrderLine");
 
                     b.Navigation("PointOfDeparture");
 
                     b.Navigation("PointOfDestination");
+
+                    b.Navigation("User");
                 });
 #pragma warning restore 612, 618
         }

@@ -27,13 +27,13 @@ namespace OrderService.Controllers
         }
 
         [HttpPut("/put")]
-        public async Task Put(DPoint point )
+        public async Task Put(Point point )
         {
             await _pointOper.Add(point);
         }
 
         [HttpPost("/update")]
-        public async Task<bool> Update(DPoint point)
+        public async Task<bool> Update(Point point)
         {
             return await _pointOper.Update(point);
         }

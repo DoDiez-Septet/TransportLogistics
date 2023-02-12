@@ -1,5 +1,9 @@
 ﻿global using Microsoft.EntityFrameworkCore;
 global using OrderService.DataAccess.Models;
+using TransportLogistics.Domain.Models.Customers;
+using TransportLogistics.Domain.Models.Order;
+using TransportLogistics.Domain.Models.Points;
+using TransportLogistics.Domain.Models.Users;
 
 namespace OrderService.DataAccess.Models
 {
@@ -14,10 +18,10 @@ namespace OrderService.DataAccess.Models
         }
 
         public DbSet<Orders> orders { get; set; }
-        public DbSet<OSCustomer> customers { get; set; }
-        public DbSet<OSUser> user { get; set; }
+        public DbSet<Customer> customers { get; set; }
+        public DbSet<User> user { get; set; }
         public DbSet<Point> point { get; set; }
-        public DbSet<OrderLine> ordersLine { get; set; }
+        public DbSet<OrderDetail> ordersLine { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
