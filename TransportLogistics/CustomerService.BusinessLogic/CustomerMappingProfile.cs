@@ -13,9 +13,9 @@ namespace CustomerService.BusinessLogic
     {
         public CustomerMappingProfile() 
         {
-            CreateMap<Customer, CustomerDto>();
+            CreateMap<CustomerDb, CustomerDto>();
 
-            CreateMap<CustomerDto, Customer>();
+            CreateMap<CustomerDto, CustomerDb>();
                 //.ForMember(d => d.Id, map => map.Ignore());
         }
     }

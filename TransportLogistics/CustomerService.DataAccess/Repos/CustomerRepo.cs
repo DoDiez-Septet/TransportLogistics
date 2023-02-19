@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace CustomerService.DataAccess.Repos
 {
-    public class CustomerRepo : Repository<Customer, Guid>
+    public class CustomerRepo : Repository<CustomerDb, Guid>
     {
         CustomerRepo(DbContext dbContext) : base(dbContext) { }
     }

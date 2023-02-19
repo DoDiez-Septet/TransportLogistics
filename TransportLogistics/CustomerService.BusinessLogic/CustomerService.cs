@@ -12,8 +12,8 @@ namespace CustomerService.BusinessLogic
     internal class CustomerService : ICustomerService
     {
         private readonly IMapper _mapper;
-        private readonly IRepository<Customer, Guid> _customerRepository;
-        public CustomerService(IMapper mapper, IRepository<Customer, Guid> customerRepository)
+        private readonly IRepository<CustomerDb, Guid> _customerRepository;
+        public CustomerService(IMapper mapper, IRepository<CustomerDb, Guid> customerRepository)
         {
             _mapper = mapper;
             _customerRepository = customerRepository;
@@ -21,7 +21,7 @@ namespace CustomerService.BusinessLogic
 
         public Guid Create(CustomerDto customerDto)
         {
-            var entity = _mapper.Map<CustomerDto, Customer>(customerDto);
+            var entity = _mapper.Map<CustomerDto, CustomerDb>(customerDto);
             var res = _customerRepository.Add(entity);
             _customerRepository.SaveChanges();
             return res.Id;
@@ -36,8 +36,8 @@ namespace CustomerService.BusinessLogic
 
         public ICollection<CustomerDto> GetAll()
         {
-            ICollection<Customer> entities = _customerRepository.GetAll(true).ToList();
-            return _mapper.Map<ICollection<Customer>, ICollection<CustomerDto>>(entities);
+            ICollection<CustomerDb> entities = _customerRepository.GetAll(true).ToList();
+            return _mapper.Map<ICollection<CustomerDb>, ICollection<CustomerDto>>(entities);
         }
 
         public CustomerDto GetById(Guid id)
@@ -47,7 +47,7 @@ namespace CustomerService.BusinessLogic
 
         public void Update(CustomerDto cDto)
         {
-            var entity = _mapper.Map<CustomerDto, Customer>(cDto); 
+            var entity = _mapper.Map<CustomerDto, CustomerDb>(cDto); 
             _customerRepository.Update(entity);
             _customerRepository.SaveChanges();
         }

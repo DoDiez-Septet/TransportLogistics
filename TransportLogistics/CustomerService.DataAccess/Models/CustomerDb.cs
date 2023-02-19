@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CustomerService.DataAccess.Models
 {
-    public class Customer : IEntity<Guid>
+    public class CustomerDb : IEntity<Guid>
     {
         /// <summary>
         /// Идентификатор заказчика
