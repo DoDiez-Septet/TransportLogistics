@@ -7,11 +7,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Abstractions" Version="2.2.0" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
+    <ProjectReference Include="..\TransportLogistics.Domain\TransportLogistics.Domain.csproj" />
+    <ProjectReference Include="..\UserService.BusinessLogic\UserService.BusinessLogic.csproj" />
+    <ProjectReference Include="..\UserService.DataAccess\UserService.DataAccess.csproj" />
   </ItemGroup>
 
 </Project>
