@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
+using CustomerService.DataAccess.Deprecated;
 using CustomerService.DataAccess.Models;
-using CustomerService.DataAccess.Repos;
 using System;
 using System.Collections.Generic;
 using System.Linq;

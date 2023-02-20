@@ -8,7 +8,7 @@ using TransportLogistics.Domain.Models.Customers;
 
 namespace TransportLogistics.Domain.Interfaces.Customers.Services
 {
-    internal interface ICustomerService : ICrudServices<Customer>
+    public interface ICustomerService : ICrudServices<Customer>
     {
     }
 }

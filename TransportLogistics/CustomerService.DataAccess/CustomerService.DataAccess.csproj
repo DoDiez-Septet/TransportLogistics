@@ -25,4 +25,8 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\TransportLogistics.Domain\TransportLogistics.Domain.csproj" />
+  </ItemGroup>
+
 </Project>

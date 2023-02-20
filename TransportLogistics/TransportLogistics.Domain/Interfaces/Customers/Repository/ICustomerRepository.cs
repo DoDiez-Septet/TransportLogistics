@@ -8,7 +8,7 @@ using TransportLogistics.Domain.Models.Customers;
 
 namespace TransportLogistics.Domain.Interfaces.Customers.Repository
 {
-    internal interface ICustomerRepository : ICrudRepository<Customer>
+    public interface ICustomerRepository : ICrudRepository<Customer>
     {
     }
 }

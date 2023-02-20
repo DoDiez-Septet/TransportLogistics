@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 
-namespace CustomerService.DataAccess.Repos
+namespace CustomerService.DataAccess.Deprecated
 {
     public class Repository
     {

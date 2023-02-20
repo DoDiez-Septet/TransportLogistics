@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CustomerService.DataAccess.Repos
+namespace CustomerService.DataAccess.Deprecated
 {
     public interface IRepository
     {
