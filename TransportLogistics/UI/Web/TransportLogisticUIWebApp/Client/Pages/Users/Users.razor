@@ -1,6 +1,6 @@
 ﻿@page "/users"
 @using TransportLogisticUIWebApp.Client.Models;
-@*@inject HttpClient httpClient*@
+@inject IHttpClientFactory httpClientFactory;
 
 <h3>Пользователи</h3>
 
@@ -25,12 +25,13 @@
                         <td class="pt-3"><a @onclick="SaveUser" href="javascript:void(0)"><i class="oi oi-thumb-up"></i></a></td>
                         <td></td>
                     </tr>
+                    
                     @if (users != null && users.Count != 0)
                     {
-                        foreach (var customer in users)
+                        foreach (var user in users)
                         {
                             <UserRecord 
-                                User="customer"
+                                User="user"
                                 UpdateUser="UpdateUser"
                                 DeleteUser="DeleteUser"></UserRecord>
                         }
@@ -48,39 +49,42 @@
 </div>
 
 @code {
-    private List<UserViewModel> users = new List<UserViewModel>();
+    private List<UserViewModel>? users = new List<UserViewModel>();
     private UserViewModel newUser = new UserViewModel();
+
+    private HttpClient httpClient;
 
     protected override async Task OnInitializedAsync()
     {
+        httpClient = httpClientFactory.CreateClient("Users");
+        httpClient.Timeout = TimeSpan.FromSeconds(600);
+
         await base.OnInitializedAsync();
         await FetchUserList();
     }
 
     private async Task FetchUserList()
     {
-        //customers = await httpClient.GetFromJsonAsync<List<CustomerViewModel>>("/api/Customer");
+        users = await httpClient.GetFromJsonAsync<List<UserViewModel>>("api/users");
     }
 
     private async Task SaveUser()
     {
-        users.Add(newUser);
+        await httpClient.PostAsJsonAsync<UserViewModel>("api/users", newUser);
+        await FetchUserList();
 
         newUser = new UserViewModel();
-        //await httpClient.PostAsJsonAsync<CustomerViewModel>("/api/Customer", newCustomer);
-        //await FetchCustomerList();
-        //newCustomer = new CustomerViewModel();
     }
 
-    private async Task UpdateUser()//CustomerViewModel cutomer)
+    private async Task UpdateUser(UserViewModel user)
     {
-        //await httpClient.PutAsJsonAsync<CustomerViewModel>("/api/Customer", cutomer);
-        //await FetchCustomerList();
+        await httpClient.PutAsJsonAsync<UserViewModel>("api/users", user);
+        await FetchUserList();
     }
 
-    private async Task DeleteUser(int customerId)
+    private async Task DeleteUser(int userId)
     {
-       //var result = await httpClient.DeleteAsync($"/api/Customer/{customerId}");
-       // await FetchCustomerList();
+        var result = await httpClient.DeleteAsync($"api/users/{userId}");
+        await FetchUserList();
     }
 }
