@@ -15,22 +15,22 @@ namespace TransportLogistics.Domain.Models.Users
         /// <summary>
         /// Имя пользователя
         /// </summary>
-        public string FirstName { get; set; }
+        public string FirstName { get; set; } = string.Empty;
 
         /// <summary>
         /// Фамилия пользователя
         /// </summary>
-        public string LastName { get; set; }
+        public string LastName { get; set; } = string.Empty;
 
         /// <summary>
         /// Email пользователя
         /// </summary>
-        public string Email { get; set; }
+        public string Email { get; set; } = string.Empty;
 
         /// <summary>
         /// Пароль пользователя
         /// </summary>
-        public string Password { get; set; }
+        public string Password { get; set; } = string.Empty;
 
         /// <summary>
         /// Роль пользователя

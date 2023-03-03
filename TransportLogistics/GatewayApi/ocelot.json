@@ -1,0 +1,34 @@
+{
+  "Routes": [
+
+    // Users WebApi
+    {
+      "UpstreamPathTemplate": "/api/users/",
+      "UpstreamHttpMethod": [ "Get", "Post", "Put" ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 8091
+        }
+      ],
+      "DownstreamPathTemplate": "/api/users/"
+    },
+    {
+      "UpstreamPathTemplate": "/api/users/{userId}",
+      "UpstreamHttpMethod": [ "Get", "Delete" ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 8091
+        }
+      ],
+      "DownstreamPathTemplate": "/api/users/{userId}"
+    }
+
+  ],
+  "GlobalConfiguration": {
+    "BaseUrl": "http://localhost:8001"
+  }
+}
