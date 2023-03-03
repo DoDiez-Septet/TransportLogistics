@@ -1,90 +1,61 @@
 ﻿@page "/users"
 @using TransportLogisticUIWebApp.Client.Models;
-@inject IHttpClientFactory httpClientFactory;
 
-<h3>Пользователи</h3>
+@*<style>
+    .selected {
+        background-color: #1E88E5 !important;
+    }
 
-<div class="row">
-    <div class="col-12 mt-4">
-        <div class="table-responsive">
-            <table class="table table-striped">
-                <thead>
-                    <tr>
-                        <td>Name</td>
-                        <td>Mobile</td>
-                        <td>Email</td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><input class="form-control" @bind="newUser.FirstName" placeholder="Name" /></td>
-                        <td><input class="form-control" @bind="newUser.LastName" placeholder="Mobile" /></td>
-                        <td><input class="form-control" @bind="newUser.Email" placeholder="Email" /></td>
-                        <td class="pt-3"><a @onclick="SaveUser" href="javascript:void(0)"><i class="oi oi-thumb-up"></i></a></td>
-                        <td></td>
-                    </tr>
-                    
-                    @if (users != null && users.Count != 0)
-                    {
-                        foreach (var user in users)
-                        {
-                            <UserRecord 
-                                User="user"
-                                UpdateUser="UpdateUser"
-                                DeleteUser="DeleteUser"></UserRecord>
-                        }
-                    }
-                    else
-                    {
-                        <tr>
-                            <td class="text-center" colspan="5">No user records to display</td>
-                        </tr>
-                    }
-                </tbody>
-            </table>
-        </div>
+        .selected > td {
+            color: white !important;
+        }
+
+            .selected > td .mud-input {
+                color: white !important;
+            }
+</style>*@
+
+@if (users != null && users.Count > 0)
+{
+    <MudFab Color="Color.Primary" StartIcon="@Icons.Material.Filled.Add" Size="Size.Small" OnClick="@((e) => AddUser())"/>
+    <MudFab Color="Color.Secondary" StartIcon="@Icons.Material.Filled.Edit" Size="Size.Small" OnClick="@((e) => UpdateUser(selectedItem1))"/>
+
+    <br />
+    <br />
+
+    <MudTable Items="@users" Dense="@dense" Hover="@hover" Bordered="@bordered" Striped="@striped" Filter="new Func<UserViewModel, bool>(FilterFunc1)" @bind-SelectedItem="selectedItem1">
+        <ToolBarContent>
+            <MudText Typo="Typo.h6">Пользователи</MudText>
+            <MudSpacer />
+            <MudTextField @bind-Value="searchString1" Placeholder="Search" Adornment="Adornment.Start" AdornmentIcon="@Icons.Material.Filled.Search" IconSize="Size.Medium" Class="mt-0"></MudTextField>
+        </ToolBarContent>
+        <HeaderContent>
+            <MudTh>Имя</MudTh>
+            <MudTh>Фамилия</MudTh>
+            <MudTh>Эл. почта</MudTh>
+        </HeaderContent>
+        <RowTemplate>
+            <MudTd DataLabel="Имя">@context.FirstName</MudTd>
+            <MudTd DataLabel="Фамилия">@context.LastName</MudTd>
+            <MudTd DataLabel="Эл. почта">@context.Email</MudTd>
+        </RowTemplate>
+        <PagerContent>
+            <MudTablePager />
+        </PagerContent>
+    </MudTable>
+
+    @if (@selectedItem1 != null)
+    {
+        @selectedItem1.UserId 
+        <br />
+        @selectedItem1.Email
+        <br />
+        @userInfo
+    }
+}
+else
+{
+    <div style="align-content:center">
+         <MudProgressCircular Color="Color.Info" Indeterminate="true" />
     </div>
-</div>
-
-@code {
-    private List<UserViewModel>? users = new List<UserViewModel>();
-    private UserViewModel newUser = new UserViewModel();
-
-    private HttpClient httpClient;
-
-    protected override async Task OnInitializedAsync()
-    {
-        httpClient = httpClientFactory.CreateClient("Users");
-        httpClient.Timeout = TimeSpan.FromSeconds(600);
-
-        await base.OnInitializedAsync();
-        await FetchUserList();
-    }
-
-    private async Task FetchUserList()
-    {
-        users = await httpClient.GetFromJsonAsync<List<UserViewModel>>("api/users");
-    }
-
-    private async Task SaveUser()
-    {
-        await httpClient.PostAsJsonAsync<UserViewModel>("api/users", newUser);
-        await FetchUserList();
-
-        newUser = new UserViewModel();
-    }
-
-    private async Task UpdateUser(UserViewModel user)
-    {
-        await httpClient.PutAsJsonAsync<UserViewModel>("api/users", user);
-        await FetchUserList();
-    }
-
-    private async Task DeleteUser(int userId)
-    {
-        var result = await httpClient.DeleteAsync($"api/users/{userId}");
-        await FetchUserList();
-    }
 }

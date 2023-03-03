@@ -18,9 +18,11 @@ internal class UserServices : IUserServices
         _userRepository.Delete(Id);
     }
 
-    public User Edit(string Id, User user)
+    public User Edit(User user)
     {
-        _userRepository.Edit(Id, user);
+        File.AppendAllText(@"C:\WEB\userserviceapi\log.txt", user.Id.ToString());
+
+        _userRepository.Edit(user.Id.ToString(), user);
 
         return GetById(user.Id.ToString());
     }

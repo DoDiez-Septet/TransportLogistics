@@ -3,7 +3,7 @@
 
     // Users WebApi
     {
-      "UpstreamPathTemplate": "/api/users",
+      "UpstreamPathTemplate": "/api/users/",
       "UpstreamHttpMethod": [ "Get", "Post", "Put" ],
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
@@ -12,7 +12,7 @@
           "Port": 8091
         }
       ],
-      "DownstreamPathTemplate": "/api/users"
+      "DownstreamPathTemplate": "/api/users/"
     },
     {
       "UpstreamPathTemplate": "/api/users/{userId}",

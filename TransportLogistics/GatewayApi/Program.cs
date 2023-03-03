@@ -9,21 +9,28 @@ builder.Configuration.SetBasePath(builder.Environment.ContentRootPath)
     .AddJsonFile("ocelot.json", optional: false, reloadOnChange: true)
     .AddEnvironmentVariables();
 
-builder.Services.AddCors(options => 
-         options.AddPolicy(name: _corsOriginPolicy,
-                builder =>
-                    { 
-                       builder
-                          .WithOrigins("http://localhost:7086")
-                          .AllowAnyOrigin()
-                          .AllowAnyMethod()
-                          .AllowAnyHeader();
-                    }));
+builder.Services.AddCors();    
+         //options => 
+         //options.AddPolicy(name: _corsOriginPolicy,
+         //       builder =>
+         //           { 
+         //              builder
+         //                 .WithOrigins("http://localhost:7086")
+         //                 .AllowAnyOrigin()
+         //                 .AllowAnyMethod()
+         //                 .AllowAnyHeader();
+         //           }));
 builder.Services.AddOcelot(builder.Configuration);
 
 
 var app = builder.Build();
 
-app.UseCors("CorsPolicy");
+app.UseCors(
+    builder => builder
+        .AllowAnyHeader()
+        .AllowAnyMethod()
+        .AllowAnyOrigin()
+    ); //"CorsPolicy");
+
 await app.UseOcelot();
 app.Run();

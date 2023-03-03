@@ -9,7 +9,7 @@ public interface ICrudServices<T>
 
     public string New(T entity);
 
-    public T Edit(string Id, T entity);
+    public T Edit(T entity);
 
     public void Delete(string Id);
 }

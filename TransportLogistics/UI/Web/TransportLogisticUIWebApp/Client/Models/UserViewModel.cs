@@ -1,16 +1,9 @@
-﻿namespace TransportLogisticUIWebApp.Client.Models;
+﻿using System.Text.Json.Serialization;
 
-public class UserViewModel
+namespace TransportLogisticUIWebApp.Client.Models;
+
+public class UserViewModel : UserViewModelToAdd
 {
-    public int UserId { get; set; }
-
-    public string FirstName { get; set; } = string.Empty;
-
-    public string LastName { get; set; } = string.Empty;
-
-    public string Email { get; set; } = string.Empty;
-
-    public string Password { get; set; } = string.Empty;
-
-    public bool IsCustomer { get; set; } = false;
+    [JsonPropertyName("Id")]
+    public string UserId { get; set; } = string.Empty;
 }

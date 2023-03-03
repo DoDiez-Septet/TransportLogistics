@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using TransportLogistics.Domain.Interfaces.Users.Services;
-using TransportLogistics.Domain.Models.Users;
+using TransportLogistics.Domain.Models.Users; 
 
 namespace UserService.Controllers;
 
@@ -39,17 +39,18 @@ public class UserController : Controller
     }
 
     [HttpPost]
-    public IActionResult AddUser(User user)
+    public IActionResult AddUser([FromBody]User user)
     {
         var newUserId = _userServices.New(user);
         return Ok($"api/users/{newUserId}");
     }
 
-    [HttpPut("{Id}")]
-    public ActionResult<string> UpdateUser(string Id, User user)
+    //[HttpPut("{Id}")]
+    [HttpPut]
+    public ActionResult<string> UpdateUser([FromBody]User user)
     {
-        var newUserId = _userServices.Edit(Id, user);
-        return Ok($"api/users/{newUserId}");
+        var newUserId = _userServices.Edit(user);
+        return Ok($"api/users/{newUserId.Id}");
     }
 
     [HttpDelete("{Id}")]
