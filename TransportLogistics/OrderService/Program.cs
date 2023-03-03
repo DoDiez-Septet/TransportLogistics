@@ -1,11 +1,17 @@
+global using Newtonsoft.Json;
+global using Microsoft.EntityFrameworkCore;
+global using OrderService.BusinessLogic;
+global using OrderService.BusinessLogic.Services;
+using OrderService.HandleExceptions;
+
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+
+builder.Services.AddBusinessLogic();
 
 var app = builder.Build();
 
@@ -21,5 +27,7 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
+
+app.UseExceptionHandlerMiddleware();
 
 app.Run();

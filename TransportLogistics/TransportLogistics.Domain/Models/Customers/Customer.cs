@@ -3,7 +3,7 @@
     /// <summary>
     /// Класс Заказчик
     /// </summary>
-    public class Customer
+    public class Customer : BaseTab
     {
         /// <summary>
         /// Идентификатор заказчика

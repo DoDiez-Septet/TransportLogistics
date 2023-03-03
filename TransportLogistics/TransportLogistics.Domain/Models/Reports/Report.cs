@@ -1,4 +1,4 @@
-using TransportLogistics.Domain.Models.Orders;
+using TransportLogistics.Domain.Models.Order;
 
 namespace TransportLogistics.Domain.Models.Reports
 {
@@ -25,6 +25,6 @@ namespace TransportLogistics.Domain.Models.Reports
         /// <summary>
         /// Заказы в отчете
         /// </summary>
-        public List<Order> Orders { get; set; }
+        public List<Orders> Orders { get; set; }
     }
 }
