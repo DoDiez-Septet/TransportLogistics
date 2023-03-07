@@ -6,10 +6,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace CustomerService.DataAccess.Repos
 {
-    public class CustomerRepo : Repository<Customer, Guid>
+    internal class CustomerRepo// : Repository<Customer, Guid>
     {
-        CustomerRepo(DbContext dbContext) : base(dbContext) { }
+        CustomerRepo(DbContext dbContext)// : base(dbContext) { }
+        { }
     }
 }
