@@ -23,7 +23,7 @@ namespace CustomerService.DataAccess
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            //SeedDatabase(modelBuilder);
+            SeedDatabase(modelBuilder);
         }
 
         private void DataBaseRecreation()

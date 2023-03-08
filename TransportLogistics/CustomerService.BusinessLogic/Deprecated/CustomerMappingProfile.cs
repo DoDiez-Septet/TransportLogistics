@@ -11,12 +11,12 @@ namespace CustomerService.BusinessLogic
 {
     internal class CustomerMappingProfile : Profile
     {
-        public CustomerMappingProfile() 
-        {
-            CreateMap<Customer, CustomerDto>();
+        //public CustomerMappingProfile() 
+        //{
+        //    CreateMap<Customer, CustomerDto>();
 
-            CreateMap<CustomerDto, Customer>();
-                //.ForMember(d => d.Id, map => map.Ignore());
-        }
+        //    CreateMap<CustomerDto, Customer>();
+        //        //.ForMember(d => d.Id, map => map.Ignore());
+        //}
     }
 }
