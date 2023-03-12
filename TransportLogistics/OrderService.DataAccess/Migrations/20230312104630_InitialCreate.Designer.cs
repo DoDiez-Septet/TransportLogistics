@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using OrderService.DataAccess.Models;
 
@@ -11,9 +12,11 @@ using OrderService.DataAccess.Models;
 namespace OrderService.DataAccess.Migrations
 {
     [DbContext(typeof(AppFactory))]
-    partial class AppFactoryModelSnapshot : ModelSnapshot
+    [Migration("20230312104630_InitialCreate")]
+    partial class InitialCreate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

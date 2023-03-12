@@ -8,12 +8,12 @@
         /// <summary>
         /// Идентификатор груза
         /// </summary>
-        public Guid Id { get; set; }
+        //public Guid Id { get; set; }
 
         /// <summary>
         /// Ссылка на заказ
         /// </summary>
-        public Guid OrderId { get; set; }
+        //public Guid OrderId { get; set; }
 
         /// <summary>
         /// Описание груза

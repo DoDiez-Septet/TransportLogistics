@@ -17,16 +17,14 @@ namespace OrderService.DataAccess.Models
             optionsBuilder.UseSqlServer("name=ConnectionStrings:WebApiDatabase");
         }
 
-        public DbSet<Orders> orders { get; set; }
-        public DbSet<Customer> customers { get; set; }
-        public DbSet<User> user { get; set; }
+        public DbSet<OrdersDb> orders { get; set; }
         public DbSet<Point> point { get; set; }
         public DbSet<OrderDetail> ordersLine { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Orders>
+            modelBuilder.Entity<OrdersDb>
             (
                 entity =>
                 {

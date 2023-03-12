@@ -62,10 +62,5 @@ namespace OrderService.BusinessLogic.Services
             }
             return _repo.Delete(Guid.Parse(guid));
         }
-
-        public Task<List<OrderDetail>> GetOrderDetailsByOrderId(string orderId) 
-        {
-            return Task.FromResult(_repo.AllBase.Where(x => x.OrderId == Guid.Parse(orderId)).ToList());
-        }
     }
 }

@@ -5,7 +5,7 @@ namespace TransportLogistics.Domain.Models.Users
     /// <summary>
     /// Класс Пользователь
     /// </summary>
-    public class User :BaseTab
+    public class User : BaseTab
     {
         /// <summary>
         /// Идентификатор пользователя

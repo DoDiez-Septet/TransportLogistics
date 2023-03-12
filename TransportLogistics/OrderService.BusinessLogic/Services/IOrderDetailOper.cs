@@ -14,6 +14,5 @@ namespace OrderService.BusinessLogic.Services
         public Task Add(OrderDetail orderDetail);
         public Task<bool> Update(OrderDetail orderDetail);
         public Task<bool> Delete(string guid);
-        public Task<List<OrderDetail>> GetOrderDetailsByOrderId(string orderId);
     }
 }

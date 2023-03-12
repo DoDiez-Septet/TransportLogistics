@@ -36,7 +36,7 @@ namespace OrderService.DataAccess.Repository
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        public async Task<T> Get(Guid id)
+        public virtual async Task<T> Get(Guid id)
         {
             return await _appFactory.Set<T>().FirstOrDefaultAsync(x => x.Id == id);
         }
@@ -56,7 +56,7 @@ namespace OrderService.DataAccess.Repository
             if (existEntity == 0)
             {
                 await _appFactory.Set<T>().AddAsync(entity);
-                await _appFactory.SaveChangesAsync();
+                _appFactory.SaveChanges();
                 return entity.Id;
             }
             return Guid.Empty;

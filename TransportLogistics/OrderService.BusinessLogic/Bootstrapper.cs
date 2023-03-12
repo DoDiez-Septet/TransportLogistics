@@ -13,9 +13,11 @@ namespace OrderService.BusinessLogic
         {
             return
             services
+            .AddDataAccess()
             .AddScoped<IPointOper, PointOper>()
             .AddScoped<IOrderDetailOper, OrderDetailOper>()
-            .AddDataAccess();
+            .AddScoped<IOrderOper, OrderOper>()
+            ;
         }
         
     }
