@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Components;
 using MudBlazor;
-using TransportLogisticUIWebApp.Client.Models;
+using TransportLogisticUIWebApp.Client.Models.Administrations.Users;
 
-namespace TransportLogisticUIWebApp.Client.Pages.Users.Dialogs;
+namespace TransportLogisticUIWebApp.Client.Pages.Administrations.Users.Dialogs;
 
 public partial class AddEditUser : ComponentBase
 {

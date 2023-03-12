@@ -18,4 +18,20 @@
     <ProjectReference Include="..\..\..\..\TransportLogistics.Domain\TransportLogistics.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="MockData\Administrations\Customers\" />
+    <Folder Include="MockData\Operations\Orders\" />
+    <Folder Include="MockData\Operations\Requests\" />
+    <Folder Include="Models\Operations\Orders\" />
+    <Folder Include="Models\Operations\Requests\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Pages\Administrations\Customers\Customers.razor" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="Pages\Administrations\Customers\Customers.razor" />
+  </ItemGroup>
+
 </Project>
