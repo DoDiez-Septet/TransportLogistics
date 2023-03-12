@@ -1,10 +1,10 @@
 ﻿using Microsoft.AspNetCore.Components;
 using MudBlazor;
 using System.Net.Http.Json;
-using TransportLogisticUIWebApp.Client.Models;
-using TransportLogisticUIWebApp.Client.Pages.Users.Dialogs;
+using TransportLogisticUIWebApp.Client.Models.Administrations.Users;
+using TransportLogisticUIWebApp.Client.Pages.Administrations.Users.Dialogs;
 
-namespace TransportLogisticUIWebApp.Client.Pages.Users;
+namespace TransportLogisticUIWebApp.Client.Pages.Administrations.Users;
 
 public partial class Users : ComponentBase
 {
@@ -39,15 +39,15 @@ public partial class Users : ComponentBase
         httpClient.Timeout = TimeSpan.FromSeconds(600);
 
         await base.OnInitializedAsync();
-        await FetchUserList();
+        await FetchUserListAsync();
     }
 
-    private async Task FetchUserList()
+    private async Task FetchUserListAsync()
     {
         users = await httpClient.GetFromJsonAsync<List<UserViewModel>>("api/users");
     }
 
-    private async Task AddUser()
+    private async Task AddUserAsync()
     {
         var parameters = new DialogParameters
         {
@@ -67,7 +67,7 @@ public partial class Users : ComponentBase
             if (responce.IsSuccessStatusCode)
             {
                 snackBar.Add("Пользователь добавлен", Severity.Success);
-                await FetchUserList();
+                await FetchUserListAsync();
             }
             else
             {
@@ -76,7 +76,7 @@ public partial class Users : ComponentBase
         }
     }
 
-    private async Task UpdateUser(UserViewModel user)
+    private async Task UpdateUserAsync(UserViewModel user)
     {
         if (user is not null)
         {
@@ -98,7 +98,7 @@ public partial class Users : ComponentBase
                 if (responce.IsSuccessStatusCode)
                 {
                     snackBar.Add("Пользователь обнавлён", Severity.Success);
-                    await FetchUserList();
+                    await FetchUserListAsync();
                 }
                 else
                 {
@@ -115,7 +115,7 @@ public partial class Users : ComponentBase
     private async Task DeleteUser(int userId)
     {
         var result = await httpClient.DeleteAsync($"api/users/{userId}");
-        await FetchUserList();
+        await FetchUserListAsync();
     }
 
     private bool FilterFunc1(UserViewModel user) => FilterFunc(user, searchString1);

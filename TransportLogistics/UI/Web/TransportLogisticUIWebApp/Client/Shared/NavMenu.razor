@@ -2,6 +2,11 @@
 
     <MudNavLink Href="/" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.Home">Главная</MudNavLink>
 
+    <MudNavGroup Title="Деятельность" Expanded="true" Icon="@Icons.Material.Filled.Airplay">
+        <MudNavLink Href="requests" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.ConnectWithoutContact">Запросы</MudNavLink>
+        <MudNavLink Href="orders" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.PostAdd">Заказы</MudNavLink>
+    </MudNavGroup>
+
     <MudNavGroup Title="Администрирование" Expanded="true" Icon="@Icons.Material.Filled.Group">
         <MudNavLink Href="users" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.Group">Сотрудники</MudNavLink>
         <MudNavLink Href="customers" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.Contacts">Клиенты</MudNavLink>
