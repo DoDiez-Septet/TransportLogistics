@@ -1,0 +1,38 @@
+﻿@page "/customers"
+@using TransportLogisticUIWebApp.Client.Models.Administrations.Customers;
+
+
+<MudFab Color="Color.Primary" StartIcon="@Icons.Material.Filled.Add" Size="Size.Small" OnClick="@((e) => AddCustomerAsync())"/>
+<MudFab Color="Color.Secondary" StartIcon="@Icons.Material.Filled.Edit" Size="Size.Small" OnClick="@((e) => UpdateCustomerAsync(selectedCustomer))"/>
+
+    <br />
+    <br />
+
+ <MudTable @bind-items="@customers" @bind-SelectedItem="selectedCustomer" Dense="@dense" Hover="@hover" Bordered="@bordered" Striped="@striped" Filter="new Func<CustomerViewModel, bool>(FilterFunc1)">
+    <ToolBarContent>
+       <MudText Typo="Typo.h6">Клиенты</MudText>
+       <MudSpacer />
+       <MudTextField @bind-Value="searchString1" Placeholder="Search" Adornment="Adornment.Start" AdornmentIcon="@Icons.Material.Filled.Search" IconSize="Size.Medium" Class="mt-0"></MudTextField>
+    </ToolBarContent>
+    
+    <HeaderContent>
+       <MudTh>Наименование компании</MudTh>
+       <MudTh>Телефон</MudTh>
+       <MudTh>Эл. почта</MudTh> 
+       <MudTh>Контактное лицо</MudTh> 
+       <MudTh>Адресс</MudTh> 
+    </HeaderContent>
+
+    <RowTemplate>
+       <MudTd DataLabel="Наименование компании">@context.Name</MudTd>
+       <MudTd DataLabel="Телефон">@context.PhoneNumber</MudTd>
+       <MudTd DataLabel="Эл. почта">@context.Email</MudTd>
+       <MudTd DataLabel="Контактное лицо">@context.ContactPerson</MudTd>
+       <MudTd DataLabel="Адресс">@context.Address</MudTd>
+    </RowTemplate>
+
+    <PagerContent>
+        <MudTablePager />
+    </PagerContent>
+
+  </MudTable>

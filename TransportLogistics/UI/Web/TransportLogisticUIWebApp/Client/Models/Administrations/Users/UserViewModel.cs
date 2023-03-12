@@ -1,6 +1,6 @@
 ﻿using System.Text.Json.Serialization;
 
-namespace TransportLogisticUIWebApp.Client.Models;
+namespace TransportLogisticUIWebApp.Client.Models.Administrations.Users;
 
 public class UserViewModel : UserViewModelToAdd
 {

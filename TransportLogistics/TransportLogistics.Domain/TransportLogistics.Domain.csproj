@@ -7,7 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Interfaces\Customers\" />
     <Folder Include="Interfaces\Orders\" />
     <Folder Include="Interfaces\Reports\" />
     <Folder Include="Interfaces\Notification\" />

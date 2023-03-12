@@ -1,5 +1,5 @@
 ﻿@page "/users"
-@using TransportLogisticUIWebApp.Client.Models;
+@using TransportLogisticUIWebApp.Client.Models.Administrations.Users;
 
 @*<style>
     .selected {
@@ -17,31 +17,36 @@
 
 @if (users != null && users.Count > 0)
 {
-    <MudFab Color="Color.Primary" StartIcon="@Icons.Material.Filled.Add" Size="Size.Small" OnClick="@((e) => AddUser())"/>
-    <MudFab Color="Color.Secondary" StartIcon="@Icons.Material.Filled.Edit" Size="Size.Small" OnClick="@((e) => UpdateUser(selectedItem1))"/>
+    <MudFab Color="Color.Primary" StartIcon="@Icons.Material.Filled.Add" Size="Size.Small" OnClick="@((e) => AddUserAsync())"/>
+    <MudFab Color="Color.Secondary" StartIcon="@Icons.Material.Filled.Edit" Size="Size.Small" OnClick="@((e) => UpdateUserAsync(selectedItem1))"/>
 
     <br />
     <br />
 
     <MudTable Items="@users" Dense="@dense" Hover="@hover" Bordered="@bordered" Striped="@striped" Filter="new Func<UserViewModel, bool>(FilterFunc1)" @bind-SelectedItem="selectedItem1">
+       
         <ToolBarContent>
             <MudText Typo="Typo.h6">Пользователи</MudText>
             <MudSpacer />
             <MudTextField @bind-Value="searchString1" Placeholder="Search" Adornment="Adornment.Start" AdornmentIcon="@Icons.Material.Filled.Search" IconSize="Size.Medium" Class="mt-0"></MudTextField>
         </ToolBarContent>
+        
         <HeaderContent>
             <MudTh>Имя</MudTh>
             <MudTh>Фамилия</MudTh>
             <MudTh>Эл. почта</MudTh>
         </HeaderContent>
+        
         <RowTemplate>
             <MudTd DataLabel="Имя">@context.FirstName</MudTd>
             <MudTd DataLabel="Фамилия">@context.LastName</MudTd>
             <MudTd DataLabel="Эл. почта">@context.Email</MudTd>
         </RowTemplate>
+        
         <PagerContent>
             <MudTablePager />
         </PagerContent>
+
     </MudTable>
 
     @if (@selectedItem1 != null)

@@ -1,0 +1,43 @@
+﻿@using TransportLogisticUIWebApp.Client.Models.Administrations.Customers;
+
+<MudDialog>
+    <TitleContent>
+        <MudText Typo="Typo.h6">
+            <MudIcon Icon="@Icons.Material.Filled.Group" Class="mr-3 mb-n1"/>
+            @header
+        </MudText>
+    </TitleContent>
+    <DialogContent>
+        <MudTextField @bind-Value="@customer.Name" Label="Наименование компании" ReadOnly="false"/>
+        <MudTextField @bind-Value="@customer.PhoneNumber" Label="Телефон" ReadOnly="false"/>
+        <MudTextField @bind-Value="@customer.Email" Label="Эл. почта" ReadOnly="false"/>
+        <MudTextField @bind-Value="@customer.ContactPerson" Label="Контактное лицо" ReadOnly="false"/>
+        <MudTextField @bind-Value="@customer.Address" Label="Адрес" ReadOnly="false"/>
+        
+        @*<MudTextField @bind-Value="@customer.Kpp" Label="КПП" ReadOnly="false"/>
+        <MudTextField @bind-Value="@customer.Ogrn" Label="ОГРН" ReadOnly="false"/>
+        <MudTextField @bind-Value="@customer.PaymentAccount" Label="Расчётный счёт" ReadOnly="false"/>
+
+        <MudSwitch @bind-Checked="@customer.IsCanOperate" Class="mud-width-full" Color="Color.Primary">Работа разрешена</MudSwitch>  
+*@
+        @*<MudSelect @bind-Value="@customer.CustomerType" Dense="true" T="CustomerType" Label="Тип клиента" Variant="Variant.Text">
+            @foreach (var type in customerTypes)
+            {
+                <MudSelectItem T="CustomerType" Value="@type">@type.CustomerTypeName</MudSelectItem>
+            }
+        </MudSelect>*@
+
+        @*<MudTextField @bind-Value="@user.Password" 
+                      Label="Пароль" 
+                      Variant="Variant.Text" 
+                      InputType="@PasswordInput" 
+                      Adornment="Adornment.End" 
+                      AdornmentIcon="@PasswordInputIcon" 
+                      OnAdornmentClick="ShowHidePassword" 
+                      AdornmentAriaLabel="Show Password" />*@
+    </DialogContent>
+    <DialogActions>
+        <MudButton OnClick="Cancel">Отмена</MudButton>
+        <MudButton Color="Color.Primary" OnClick="CustomerAddUpdate">@addButtonText</MudButton>
+    </DialogActions>
+</MudDialog>
