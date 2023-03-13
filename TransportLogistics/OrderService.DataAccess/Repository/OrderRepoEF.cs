@@ -60,7 +60,7 @@ namespace OrderService.DataAccess.Repository
                 }
             }
 
-            Dictionary<Guid, Customer> customerId = new Dictionary<Guid, Customer>();
+            Dictionary<Guid, Customer?> customerId = new Dictionary<Guid, Customer?>();
 
             Ids = orderList.Select(x => x.CustomerId).Distinct().ToList();
 
@@ -69,10 +69,8 @@ namespace OrderService.DataAccess.Repository
                 if (id != Guid.Empty)
                 {
                     var thisCustomer = await _customer.Get(id);
-                    if (thisCustomer != null) 
-                    {
-                        customerId.Add(id, thisCustomer);
-                    }
+
+                    customerId.Add(id, thisCustomer);
                 }
             }
 
@@ -80,7 +78,7 @@ namespace OrderService.DataAccess.Repository
             {
                 if (order.CustomerId != Guid.Empty) 
                 {
-                    order.Customer = customerId[order.UserId];
+                    order.Customer = customerId[order.CustomerId];
                 }
             }
 
@@ -92,7 +90,6 @@ namespace OrderService.DataAccess.Repository
             var orderDb = await _appFactory.orders
                 .Include(x => x.PointOfDeparture)
                 .Include(x => x.PointOfDestination)
-                .Include(x => x.OrderLine)
                 .FirstOrDefaultAsync(x => x.Id == guid);
 
             Orders order = new();

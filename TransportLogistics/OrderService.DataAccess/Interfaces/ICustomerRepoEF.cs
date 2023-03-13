@@ -6,6 +6,6 @@ namespace OrderService.DataAccess.Interfaces
     {
         public Task<bool> Update(Customer entity);
         public Task<List<Customer>> Get();
-        public Task<Customer> Get(Guid guid);
+        public Task<Customer?> Get(Guid guid);
     }
 }

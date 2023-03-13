@@ -29,12 +29,17 @@ namespace OrderService.DataAccess.Repository
         {
             HttpClient httpClient = new HttpClient();
             var response = await httpClient.GetAsync(customerApi);
+            if (response.StatusCode != System.Net.HttpStatusCode.OK)
+            {
+                return new List<Customer>();
+            }
+
             var result = await response.Content.ReadAsStringAsync();
             Console.WriteLine($"Response Status Code = {response.StatusCode}\n Message:\n{result}");
             return JsonConvert.DeserializeObject<List<Customer>>(result);
         }
 
-        public async Task<Customer> Get(Guid guid)
+        public async Task<Customer?> Get(Guid guid)
         {
             customer = await Get();
             return customer.FirstOrDefault(x => x.Id == guid) ?? null;
