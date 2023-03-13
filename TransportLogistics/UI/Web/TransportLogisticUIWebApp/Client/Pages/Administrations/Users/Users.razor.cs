@@ -35,7 +35,7 @@ public partial class Users : ComponentBase
 
     protected override async Task OnInitializedAsync()
     {
-        httpClient = httpClientFactory.CreateClient("Users");
+        httpClient = httpClientFactory.CreateClient("GatewayApi");
         httpClient.Timeout = TimeSpan.FromSeconds(600);
 
         await base.OnInitializedAsync();
