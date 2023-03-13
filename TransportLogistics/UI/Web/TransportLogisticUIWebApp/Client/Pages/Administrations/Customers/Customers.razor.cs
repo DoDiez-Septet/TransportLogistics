@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Http;
 using MudBlazor;
 using System.Net.Http;
+using System.Net.Http.Json;
 using TransportLogistics.Domain.Models.Customers;
 using TransportLogisticUIWebApp.Client.Models.Administrations.Customers;
 using TransportLogisticUIWebApp.Client.Pages.Administrations.Customers.Dialogs;
@@ -20,9 +21,11 @@ public partial class Customers : ComponentBase
     [Inject]
     ISnackbar snackBar { get; set; }
 
+    HttpClient httpClient = null;
+
     private List<CustomerViewModel>? customers;
 
-    private List<CustomerType>? customerTypes;
+    //private List<CustomerType>? customerTypes;
 
     private CustomerServices? customerServices;
 
@@ -36,19 +39,29 @@ public partial class Customers : ComponentBase
 
     protected override async Task OnInitializedAsync()
     {
-        await base.OnInitializedAsync();
+        httpClient = httpClientFactory.CreateClient("Customers");
+        httpClient.BaseAddress = new Uri("http://91.219.6.251:8092");
+        httpClient.Timeout = TimeSpan.FromSeconds(600);
 
-        customerServices = new CustomerServices();
-        customers = customerServices.GetCustomers();
-        customerTypes = customerServices.GetCustomerTypesList();
+        await base.OnInitializedAsync();
+        await FetchCustomerListAsync();
+
+        //customerServices = new CustomerServices();
+        //customers = customerServices.GetCustomers();
+        //customerTypes = customerServices.GetCustomerTypesList();
     }
 
-    private async void AddCustomerAsync()
+    private async Task FetchCustomerListAsync()
+    {
+        customers = await httpClient.GetFromJsonAsync<List<CustomerViewModel>>("api/customers");
+    }
+
+    private async Task AddCustomerAsync()
     {
         var parameters = new DialogParameters
         {
             ["customer"] = new CustomerViewModelToAdd(),
-            ["customerTypes"] = customerTypes,
+            //["customerTypes"] = customerTypes,
             ["header"] = "Добавление нового заказчика",
             ["addButtonText"] = "Добавить"
         };
@@ -60,23 +73,23 @@ public partial class Customers : ComponentBase
 
         if (!result.Canceled)
         {
-            //var responce = await httpClient.PostAsJsonAsync<CustomerViewModelToAdd>("api/customer/", addedUser);
+            var responce = await httpClient.PostAsJsonAsync<CustomerViewModelToAdd>("api/customer/", addedCustomer);
 
-            var customersCountBefore = customers.Count;
+            //var customersCountBefore = customers.Count;
 
-            customers.Add(addedCustomer);
+            //customers.Add(addedCustomer);
 
-            var customersCountAfter = customers.Count;
+            //var customersCountAfter = customers.Count;
 
-            if (customersCountAfter > customersCountBefore)//responce == 200)
+            if (responce.IsSuccessStatusCode) //customersCountAfter > customersCountBefore)
             {
                 snackBar.Add("Клиент добавлен", Severity.Success);
-                //await FetchUserList();
+                await FetchCustomerListAsync();
             }
             else
             {
-                //snackBar.Add($"Ошибка при добавления пользователя\r\n{responce.StatusCode}", Severity.Error);
-                snackBar.Add($"Ошибка при добавления клиента\r\nResponce Code", Severity.Error);
+                snackBar.Add($"Ошибка при добавления пользователя\r\n{responce.StatusCode}", Severity.Error);
+                //snackBar.Add($"Ошибка при добавления клиента\r\nResponce Code", Severity.Error);
             }
         }
     }
@@ -88,7 +101,7 @@ public partial class Customers : ComponentBase
             var parameters = new DialogParameters
             {
                 ["customer"] = selectedCustomer,
-                ["customerTypes"] = customerTypes,
+                //["customerTypes"] = customerTypes,
                 ["header"] = "Обновления нового заказчика",
                 ["addButtonText"] = "Обновить"
             };
@@ -100,22 +113,22 @@ public partial class Customers : ComponentBase
 
             if (!result.Canceled)
             {
-                //var responce = await httpClient.PutAsJsonAsync<CustomerViewModel>("api/customers/", updatedUser);
+                var responce = await httpClient.PutAsJsonAsync<CustomerViewModel>("api/customers/", updatedCustomer);
 
-                var customer = customers.FirstOrDefault(x => x.CustomerId == updatedCustomer.CustomerId);
+                //var customer = customers.FirstOrDefault(x => x.CustomerId == updatedCustomer.CustomerId);
 
-                if (customer is not null)
+                if (responce.IsSuccessStatusCode)//customer is not null)
                 {
-                    customers.Remove(customer);
-                    customers.Add(updatedCustomer);
+                    //customers.Remove(customer);
+                    //customers.Add(updatedCustomer);
 
                     snackBar.Add("Клиент обнавлён", Severity.Success);
-                    //await FetchUserListAsync();
+                    await FetchCustomerListAsync();
                 }
                 else
                 {
-                    snackBar.Add($"Ошибка при обновление клиента\r\nКод ошибки", Severity.Error);
-                    //snackBar.Add($"Ошибка при обновление пользователя\r\n{responce.StatusCode}", Severity.Error);
+                    //snackBar.Add($"Ошибка при обновление клиента\r\nКод ошибки", Severity.Error);
+                    snackBar.Add($"Ошибка при обновление пользователя\r\n{responce.StatusCode}", Severity.Error);
                 }
             }
         }
