@@ -25,10 +25,61 @@
         }
       ],
       "DownstreamPathTemplate": "/api/users/{userId}"
-    }
+    },
 
+    // Customers WebApi
+    {
+      "UpstreamPathTemplate": "/api/customers/",
+      "UpstreamHttpMethod": [ "Get", "Post", "Put" ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 8092
+        }
+      ],
+      "DownstreamPathTemplate": "/api/customers/"
+    },
+    {
+      "UpstreamPathTemplate": "/api/customers/{userId}",
+      "UpstreamHttpMethod": [ "Get", "Delete" ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 8092
+        }
+      ],
+      "DownstreamPathTemplate": "/api/customers/{userId}"
+    },
+
+    // Orders WebApi
+    {
+      "UpstreamPathTemplate": "/api/orders/",
+      "UpstreamHttpMethod": [ "Get", "Post", "Put" ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 8093
+        }
+      ],
+      "DownstreamPathTemplate": "/api/orders/"
+    },
+    {
+      "UpstreamPathTemplate": "/api/orders/{userId}",
+      "UpstreamHttpMethod": [ "Get", "Delete" ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 8093
+        }
+      ],
+      "DownstreamPathTemplate": "/api/orders/{userId}"
+    }
   ],
   "GlobalConfiguration": {
-    "BaseUrl": "http://localhost:8001"
+    "BaseUrl": "http://91.219.6.251:8001"
   }
 }

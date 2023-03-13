@@ -16,6 +16,9 @@ public partial class Customers : ComponentBase
     IHttpClientFactory httpClientFactory { get; set; }
 
     [Inject]
+    IConfiguration config { get; set; }
+
+    [Inject]
     IDialogService dialogService { get; set; }
 
     [Inject]
@@ -39,8 +42,7 @@ public partial class Customers : ComponentBase
 
     protected override async Task OnInitializedAsync()
     {
-        httpClient = httpClientFactory.CreateClient("Customers");
-        httpClient.BaseAddress = new Uri("http://91.219.6.251:8092");
+        httpClient = httpClientFactory.CreateClient("GatewayApi");
         httpClient.Timeout = TimeSpan.FromSeconds(600);
 
         await base.OnInitializedAsync();
