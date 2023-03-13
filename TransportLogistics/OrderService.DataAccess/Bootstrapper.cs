@@ -19,7 +19,7 @@ namespace OrderService.DataAccess
             .AddScoped<IPointRepoEF, PointRepoEF>()
             .AddScoped<IOrderDetailRepoEF, OrderDetailRepoEF>()
             .AddScoped<IOrderRepoEF, OrderRepoEF>()
-            
+            .AddScoped<ICustomerRepoEF, CustomersRepoEF>()            
             ;
         }
     }

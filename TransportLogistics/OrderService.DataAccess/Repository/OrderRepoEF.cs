@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using TransportLogistics.Domain.Models.Customers;
 using TransportLogistics.Domain.Models.Order;
 using TransportLogistics.Domain.Models.Users;
 
@@ -7,10 +8,12 @@ namespace OrderService.DataAccess.Repository
     public class OrderRepoEF : RepoEF<OrdersDb>, IOrderRepoEF
     {
         private readonly IUserRepoEF _user;
+        private readonly ICustomerRepoEF _customer;
         private readonly IMapper _mapper;
-        public OrderRepoEF(AppFactory appContext, IUserRepoEF userRepoEF, IMapper mapper) : base(appContext)
+        public OrderRepoEF(AppFactory appContext, IUserRepoEF userRepoEF, ICustomerRepoEF customerRepoEF, IMapper mapper) : base(appContext)
         { 
             _user = userRepoEF;
+            _customer = customerRepoEF;
             _mapper = mapper;
         }
 
@@ -57,6 +60,30 @@ namespace OrderService.DataAccess.Repository
                 }
             }
 
+            Dictionary<Guid, Customer> customerId = new Dictionary<Guid, Customer>();
+
+            Ids = orderList.Select(x => x.CustomerId).Distinct().ToList();
+
+            foreach (var id in Ids)
+            {
+                if (id != Guid.Empty)
+                {
+                    var thisCustomer = await _customer.Get(id);
+                    if (thisCustomer != null) 
+                    {
+                        customerId.Add(id, thisCustomer);
+                    }
+                }
+            }
+
+            foreach (var order in orderList)
+            {
+                if (order.CustomerId != Guid.Empty) 
+                {
+                    order.Customer = customerId[order.UserId];
+                }
+            }
+
             return orderList;
         }
 
@@ -72,12 +99,22 @@ namespace OrderService.DataAccess.Repository
             if (orderDb != null)
             {
                 order = _mapper.Map<Orders>(orderDb);
+                
                 if (order.UserId != Guid.Empty)
                 {
                     var id = await _user.Get(order.UserId);
                     if (id != null)
                     {
                         order.User = id;
+                    }
+                }
+
+                if (order.CustomerId != Guid.Empty)
+                {
+                    var id = await _customer.Get(order.CustomerId);
+                    if (id != null)
+                    {
+                        order.Customer = id;
                     }
                 }
             }
