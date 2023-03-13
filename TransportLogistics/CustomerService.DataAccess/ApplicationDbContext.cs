@@ -13,17 +13,17 @@ namespace CustomerService.DataAccess
 
         public ApplicationDbContext(DbContextOptions options) : base(options)
         {
-            if (!_isDatabaseCreated)
-            {
-                DataBaseRecreation();
+            //if (!_isDatabaseCreated)
+            //{
+            //    DataBaseRecreation();
 
-                _isDatabaseCreated = true;
-            }
+            //    _isDatabaseCreated = true;
+            //}
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            SeedDatabase(modelBuilder);
+            //SeedDatabase(modelBuilder);
         }
 
         private void DataBaseRecreation()
