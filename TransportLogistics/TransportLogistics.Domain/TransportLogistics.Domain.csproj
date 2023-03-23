@@ -10,7 +10,6 @@
     <Folder Include="Interfaces\Orders\" />
     <Folder Include="Interfaces\Reports\" />
     <Folder Include="Interfaces\Notification\" />
-    <Folder Include="Models\Notification\" />
   </ItemGroup>
 
 </Project>
