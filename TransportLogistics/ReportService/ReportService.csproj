@@ -7,11 +7,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="Controllers\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ReportService.BusinessLogic\ReportService.BusinessLogic.csproj" />
+    <ProjectReference Include="..\TransportLogistics.Domain\TransportLogistics.Domain.csproj" />
   </ItemGroup>
 
 </Project>
