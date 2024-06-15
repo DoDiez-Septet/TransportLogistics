@@ -1,9 +1,8 @@
-using Microsoft.Extensions.DependencyInjection.Extensions;
+using CustomServices;
 using UserService.BusinessLogic;
 using UserService.DataAccess;
 
 var builder = WebApplication.CreateBuilder(args);
-
 
 IConfiguration configuration = builder.Configuration;
 
@@ -12,12 +11,12 @@ ConfigureServices(builder.Services);
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+//// Configure the HTTP request pipeline.
+//if (app.Environment.IsDevelopment())
+//{
+//    app.UseSwagger();
+//    app.UseSwaggerUI();
+//}
 
 app.UseHttpsRedirection();
 
@@ -27,17 +26,14 @@ app.MapControllers();
 
 app.Run();
 
-
 void ConfigureServices(IServiceCollection services)
 {
-    //services.Add(configuration);
     services.AddControllers();
 
-    // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
     services.AddEndpointsApiExplorer();
-    services.AddSwaggerGen();
 
     services.AddSingleton(configuration);
-    services.AddUsersDataAccess(configuration);
+    services.AddUsersDataAccess(configuration);    
     services.AddUsersBusinessLogic();
+    services.AddCustomIntegratedServices();
 }

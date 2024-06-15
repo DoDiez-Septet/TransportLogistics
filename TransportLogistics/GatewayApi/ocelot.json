@@ -67,7 +67,7 @@
       "DownstreamPathTemplate": "/api/orders/"
     },
     {
-      "UpstreamPathTemplate": "/api/orders/{userId}",
+      "UpstreamPathTemplate": "/api/orders/{id}",
       "UpstreamHttpMethod": [ "Get", "Delete" ],
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
@@ -76,7 +76,7 @@
           "Port": 8093
         }
       ],
-      "DownstreamPathTemplate": "/api/orders/{userId}"
+      "DownstreamPathTemplate": "/api/orders/{id}"
     }
   ],
   "GlobalConfiguration": {
