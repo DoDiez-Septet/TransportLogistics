@@ -14,7 +14,7 @@ namespace OrderService.DataAccess.Models
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("name=ConnectionStrings:WebApiDatabase");
+            optionsBuilder.UseSqlServer("name=ConnectionStrings:WebApiLocalDatabase"); ////WebApiDatabase");
         }
 
         public DbSet<OrdersDb> orders { get; set; }

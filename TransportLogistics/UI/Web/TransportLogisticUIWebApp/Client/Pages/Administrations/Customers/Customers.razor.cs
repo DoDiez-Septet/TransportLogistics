@@ -1,9 +1,6 @@
 ﻿using Microsoft.AspNetCore.Components;
-using Microsoft.AspNetCore.Http;
 using MudBlazor;
-using System.Net.Http;
 using System.Net.Http.Json;
-using TransportLogistics.Domain.Models.Customers;
 using TransportLogisticUIWebApp.Client.Models.Administrations.Customers;
 using TransportLogisticUIWebApp.Client.Pages.Administrations.Customers.Dialogs;
 using TransportLogisticUIWebApp.Client.Services.Administrations.Customers;

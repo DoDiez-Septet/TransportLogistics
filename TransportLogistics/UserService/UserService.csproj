@@ -8,12 +8,13 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Abstractions" Version="2.2.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.EnvironmentVariables" Version="7.0.0" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\TransportLogistics.Domain\TransportLogistics.Domain.csproj" />
     <ProjectReference Include="..\UserService.BusinessLogic\UserService.BusinessLogic.csproj" />
+    <ProjectReference Include="..\UserService.CustomService\CustomServices\CustomServices.csproj" />
     <ProjectReference Include="..\UserService.DataAccess\UserService.DataAccess.csproj" />
   </ItemGroup>
 

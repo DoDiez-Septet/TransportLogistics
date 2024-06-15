@@ -1,0 +1,14 @@
+﻿@page "/orders"
+@using TransportLogistics.Domain.Models.Order;
+
+<h3>Заказы</h3>
+
+@*T="Orders"*@
+
+<MudDataGrid Items="@orders" Hover="@hover" Dense="@dense" Striped="@striped" Bordered="@bordered">  @*RowStyleFunc="@_rowStyleFunc">*@
+    <Columns>
+        <Column T="Orders" Field="@nameof(Orders.Number)" 
+                Title="Номер"
+                SortBy="@(_=>nameof(Orders.Number))" />
+    </Columns>
+</MudDataGrid>

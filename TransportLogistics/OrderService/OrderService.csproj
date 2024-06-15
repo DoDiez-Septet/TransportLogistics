@@ -24,6 +24,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\OrderService.BusinessLogic\OrderService.BusinessLogic.csproj" />
+    <ProjectReference Include="..\Orders\CustomRabbitService\CustomRabbitService\CustomRabbitService.csproj" />
   </ItemGroup>
 
 </Project>

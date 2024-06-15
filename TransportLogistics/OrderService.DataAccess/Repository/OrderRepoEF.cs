@@ -29,7 +29,6 @@ namespace OrderService.DataAccess.Repository
                 return new List<Orders>();
             }
 
-
             List<Orders> orderList = new List<Orders>();
             foreach(var order in orderDbList)
             {

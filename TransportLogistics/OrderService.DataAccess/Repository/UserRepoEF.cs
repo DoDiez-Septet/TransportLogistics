@@ -1,19 +1,16 @@
 ﻿using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Options;
-using Newtonsoft.Json;
 using System.Net.Http.Json;
-using System.Text.Json.Serialization;
 using TransportLogistics.Domain.Models.Users;
 
 namespace OrderService.DataAccess.Repository
 {
     public class UserRepoEF : RepoEF<User>, IUserRepoEF
     {
-        private readonly string userApi = String.Empty;
+        private readonly string userApi = string.Empty;
         private List<User> users = new List<User>();
         public UserRepoEF(AppFactory appFactory, IConfiguration config) : base(appFactory)
         {
-            userApi = config["UsersAPI"] ?? String.Empty;
+            userApi = config["UsersAPI"] ?? string.Empty;
         }
 
         public override Task<bool> Update(User entity)

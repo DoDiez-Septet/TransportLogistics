@@ -24,6 +24,7 @@
     <Folder Include="MockData\Operations\Requests\" />
     <Folder Include="Models\Operations\Orders\" />
     <Folder Include="Models\Operations\Requests\" />
+    <Folder Include="Pages\Operations\OrdersOps\Dialogs\" />
   </ItemGroup>
 
   <ItemGroup>

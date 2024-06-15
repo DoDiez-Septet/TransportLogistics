@@ -1,7 +1,7 @@
 using Ocelot.Middleware;
 using Ocelot.DependencyInjection;
 
-var _corsOriginPolicy = "CorsPolicy";
+//var _corsOriginPolicy = "CorsPolicy";
 
 var builder = WebApplication.CreateBuilder(args);
 
